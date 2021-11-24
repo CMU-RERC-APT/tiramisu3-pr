@@ -9,7 +9,7 @@ TODO:
 - troubleshooting
 
 
-![Overall Architecture](/docs/img/architecture.pdf)
+![Overall Architecture](/doc/img/architecture.pdf)
 
 
 

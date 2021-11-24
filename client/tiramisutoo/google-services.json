@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "723232743147",
+    "firebase_url": "https://tiramisutoo-149218.firebaseio.com",
+    "project_id": "tiramisutoo-149218",
+    "storage_bucket": "tiramisutoo-149218.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723232743147:android:53a04cfc510240d8",
+        "android_client_info": {
+          "package_name": "com.tiramisutransit.tiramisutoo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "723232743147-336bfk0d33ls7llhdje52fqkeqsqunj6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuKh13rJ435p1udzBMrxCeF0-UzQFZ8bM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723232743147:android:2bba164a295aeaac",
+        "android_client_info": {
+          "package_name": "edu.cmu.dv1.androidprod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "723232743147-336bfk0d33ls7llhdje52fqkeqsqunj6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuKh13rJ435p1udzBMrxCeF0-UzQFZ8bM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

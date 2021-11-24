@@ -1,0 +1,21 @@
+MAILTO="oscarr@andrew.cmu.edu"
+
+#Jobs for checking if the GTFS has changed
+#0 1 * * * /home/ubuntu/tiramisu/backend/gtfs-monitor/paac-pittsburgh-pa/compare_paac.sh
+#1 1 * * * /home/ubuntu/tiramisu/backend/gtfs-monitor/bronx-nyc/compare_bronx_nyc.sh
+#2 1 * * * /home/ubuntu/tiramisu/backend/gtfs-monitor/brooklyn-nyc/compare_brooklyn_nyc.sh
+#3 1 * * * /home/ubuntu/tiramisu/backend/gtfs-monitor/manhattan-nyc/compare_manhattan_nyc.sh
+#4 1 * * * /home/ubuntu/tiramisu/backend/gtfs-monitor/queens-nyc/compare_queens_nyc.sh
+#5 1 * * * /home/ubuntu/tiramisu/backend/gtfs-monitor/staten-island-nyc/compare_staten_island_nyc.sh
+#6 1 * * * /home/ubuntu/tiramisu/backend/gtfs-monitor/busco-nyc/compare_busco_nyc.sh
+
+
+0 23 */2 * * /home/ubuntu/tiramisu/backend/gtfs-monitor/paac-pittsburgh-pa/compare_paac.sh
+1 23 */2 * * /home/ubuntu/tiramisu/backend/gtfs-monitor/bronx-nyc/compare_bronx_nyc.sh
+2 23 */2 * * /home/ubuntu/tiramisu/backend/gtfs-monitor/brooklyn-nyc/compare_brooklyn_nyc.sh
+3 23 */2 * * /home/ubuntu/tiramisu/backend/gtfs-monitor/manhattan-nyc/compare_manhattan_nyc.sh
+4 23 */2 * * /home/ubuntu/tiramisu/backend/gtfs-monitor/queens-nyc/compare_queens_nyc.sh
+5 23 */2 * * /home/ubuntu/tiramisu/backend/gtfs-monitor/staten-island-nyc/compare_staten_island_nyc.sh
+6 23 */2 * * /home/ubuntu/tiramisu/backend/gtfs-monitor/busco-nyc/compare_busco_nyc.sh
+
+

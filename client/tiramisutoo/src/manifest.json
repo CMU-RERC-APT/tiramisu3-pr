@@ -1,0 +1,13 @@
+{
+  "name": "TiramisuToo",
+  "short_name": "TiramisuToo",
+  "start_url": "index.html",
+  "display": "standalone",
+  "icons": [{
+    "src": "assets/icon.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }],
+  "background_color": "#4e8ef7",
+  "theme_color": "#4e8ef7"
+}

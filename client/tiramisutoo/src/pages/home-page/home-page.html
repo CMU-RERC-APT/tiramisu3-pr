@@ -1,0 +1,279 @@
+<!-- header bar contains a searchbox and a button to toggle map -->
+<ion-header [attr.aria-hidden]="ariaHidden">
+  <ion-navbar color="primary">
+    <ion-grid>
+      <ion-row center class="header-bar">
+        <ion-col>
+          <div id="search-input-container">
+            <ion-searchbar role="search" [ngClass]="cancelButtonClass" id="search-input"
+                           [(ngModel)]="searchQuery"
+                           placeholder="Search map"
+                           showCancelButton="true"
+                           (ionFocus)="startSearch()"
+                           (ionInput)="autocompleteSearch()"
+                           (ionCancel)="turnOffSearch()"
+                           (search)="submitSearch($event)"
+                           >
+            </ion-searchbar>
+          </div>
+          <ion-row *ngIf="!searchToggle" role="button" [attr.aria-label]="speakClosestStop()" class="location-bar" (click)="centerOnUserLocation();logLocationBar()" tappable scrollX="true">
+            <div id="your-location-icon"></div>
+            <ion-col aria-hidden="true">
+              <ion-scroll scrollX="true" class="closestStop">
+                <span> Closest Stop : {{closestStopText}}</span>
+              </ion-scroll>
+            </ion-col>
+          </ion-row>
+
+        </ion-col>
+        <ion-col col-2 *ngIf="!searchToggle" class = "settings-toggle" role = "button" (click)="showSettings()" tappable>
+          <ion-icon name="settings" class="settingsIcon"></ion-icon>
+        </ion-col>
+        <ion-col col-2 *ngIf="!searchToggle" class = "map-toggle" role="button" [attr.aria-label]="speakMapButton()" (click)="toggleMap();logToggleMapBtn()" tappable>
+            <div aria-hidden="true">Map</div>
+            <div aria-hidden="true"><ion-icon [name]="getMapArrow()"></ion-icon></div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-navbar>
+  
+  <!-- suggested search results-->
+  <ion-row *ngIf="searchToggle">
+    <ion-col *ngIf="is_ios" class="search-lists-ios">
+      <ion-scroll scrollY="true" [ngStyle]="{height: searchSuggestionsHeight+'px'}">
+        <ion-list *ngIf="autocompleteResults.length > 0">
+          <ion-item *ngFor="let result of autocompleteResults" (click)="selectAutocompleteSearch(result)" tappable>
+            <span class="search-item">{{result.description}}</span>
+          </ion-item>
+        </ion-list>
+        <ion-list *ngIf="!centeredOnUserLocation">
+          <ion-item (click)="centerOnUserLocation()" tappable>
+            <span class="location-icon"></span>
+            <span class="search-item">My Location</span>
+          </ion-item>
+        </ion-list>
+        <ion-list *ngIf="keys(selectedStopSet).length > 0">
+          <ion-list-header class="search-title"><span>Favorite Stops</span></ion-list-header>
+          <ion-item *ngFor="let stopId of keys(selectedStopSet)" (click)="selectStopSearch(stopId)" tappable>
+            <span class="stop-icon"></span>
+            <span class="search-item">{{selectedStopSet[stopId].name}}</span>
+          </ion-item>
+        </ion-list>
+        <ion-list *ngIf="recentSearches.length > 0">
+          <ion-list-header class="search-title"><span>Recent Searches</span></ion-list-header>
+          <ion-item *ngFor="let search of recentSearches" (click)="selectRecentSearch(search)" click>
+            <span class="recent-icon"></span>
+            <span class="search-item">{{search.name}}</span>
+          </ion-item>
+        </ion-list>
+      </ion-scroll>
+    </ion-col>
+
+    <ion-col *ngIf="!is_ios" class="search-lists-android">
+      <ion-scroll scrollY="true" [ngStyle]="{height: searchSuggestionsHeight+'px'}">
+        <ion-list *ngIf="autocompleteResults.length > 0">
+          <ion-item *ngFor="let result of autocompleteResults" (click)="selectAutocompleteSearch(result)" tappable>
+            <span class="search-item">{{result.description}}</span>
+          </ion-item>
+        </ion-list>
+        <ion-list *ngIf="!centeredOnUserLocation">
+          <ion-item (click)="centerOnUserLocation()" tappable>
+            <span class="location-icon"></span>
+            <span class="search-item">My Location</span>
+          </ion-item>
+        </ion-list>
+        <ion-list *ngIf="keys(selectedStopSet).length > 0">
+          <ion-item-divider class="search-title"><span>Favorite Stops</span></ion-item-divider>
+          <ion-item *ngFor="let stopId of keys(selectedStopSet)" (click)="selectStopSearch(stopId)" tappable>
+            <span class="stop-icon"></span>
+            <span class="search-item">{{selectedStopSet[stopId].name}}</span>
+          </ion-item>
+        </ion-list>
+        <ion-list *ngIf="recentSearches.length > 0">
+          <ion-item-divider class="search-title"><span>Recent Searches</span></ion-item-divider>
+          <ion-item *ngFor="let search of recentSearches" (click)="selectRecentSearch(search)" click>
+            <span class="recent-icon"></span>
+            <span class="search-item">{{search.name}}</span>
+          </ion-item>
+        </ion-list>
+      </ion-scroll>
+    </ion-col>
+  </ion-row>
+
+  <!-- to display map, initially hidden -->
+  <div aria-hidden="true" id="map-container" [style.height]="getMapHeight()">
+    <div id="map"></div>
+  </div>
+
+  <!-- the route selector bar -->
+  <ion-scroll role="complementary" id="route_filter" aria-label="Route filters" *ngIf="!searchToggle" scrollX="true" class="route-selector">
+    <ion-grid>
+      <ion-row role="listbox" [attr.aria-label]="speakRouteFilterSummary()" nowrap>
+
+        <ng-container *ngIf="is_ios">
+          <!-- jump to schedule list button for voiceover -->
+          <ion-col class="jumpBtn" *ngIf="voiceOverEnabled" role="button option" aria-label="jump to schedule list" tabindex="0" (tap)="jumpOverFilter()">
+            <span> </span>
+          </ion-col>
+          <!-- inbound route filter -->
+          <ion-col *ngIf="inPaac()" [ngClass]="inFilterClass" role="button option" aria-label="Inbound" tabindex="0" [attr.aria-pressed]="inFilter" (tap)="toggleInFilter()">
+            <span>IN</span>
+          </ion-col>
+
+          <!-- outbound route filter -->
+          <ion-col *ngIf="inPaac()" [ngClass]="outFilterClass" role="button option" aria-label="Outbound" tabindex="0" [attr.aria-pressed]="outFilter" (tap)="toggleOutFilter()">
+            <span>OUT</span>
+          </ion-col>
+
+          <!-- selected routes -->
+          <ion-col *ngFor="let route of selectedRouteList" [ngClass]="routeFilterClass(route)" role="button option" tabindex="0" [attr.aria-pressed]="true" (tap)="unSelectRoute(route)">
+            <span>{{route.routeShortName}}</span>
+          </ion-col>
+
+          <!-- unselected routes -->
+          <ion-col *ngFor="let route of nearbyRoutes" role="button option" tabindex="0" [attr.aria-pressed]="false" (tap)="selectRoute(route)">
+            <span>{{route.routeShortName}}</span>
+          </ion-col>
+
+          <!-- jump to start of filter button for voiceover -->
+          <ion-col class="jumpBtn" *ngIf="voiceOverEnabled" role="button option" aria-label="jump to first route filter" tabindex="0" (tap)="jumpBackFilter()">
+            <span> </span>
+          </ion-col>
+        </ng-container>
+
+        <ng-container *ngIf="!is_ios">
+          <!-- inbound route filter -->
+          <ion-col *ngIf="inPaac()" [ngClass]="inFilterClass" role="button option" aria-label="Inbound" tabindex="0" [attr.aria-pressed]="inFilter" (click)="toggleInFilter()">
+            <span>IN</span>
+          </ion-col>
+
+          <!-- outbound route filter -->
+          <ion-col *ngIf="inPaac()" [ngClass]="outFilterClass" role="button option" aria-label="Outbound" tabindex="0" [attr.aria-pressed]="outFilter" (click)="toggleOutFilter()">
+            <span>OUT</span>
+          </ion-col>
+
+          <!-- selected routes -->
+          <ion-col *ngFor="let route of selectedRouteList" [ngClass]="routeFilterClass(route)" role="button option" tabindex="0" [attr.aria-pressed]="true" (click)="unSelectRoute(route)">
+            <span>{{route.routeShortName}}</span>
+          </ion-col>
+
+          <!-- unselected routes -->
+          <ion-col *ngFor="let route of nearbyRoutes" role="button option" tabindex="0" [attr.aria-pressed]="false" (click)="selectRoute(route)">
+            <span>{{route.routeShortName}}</span>
+          </ion-col>
+        </ng-container>
+
+      </ion-row>
+    </ion-grid>
+  </ion-scroll>
+  <!-- end of route selector -->
+</ion-header>
+<!-- end of header bar -->
+
+<ion-content id="schedule_list" [ngClass]="mapClass" [attr.aria-hidden]="ariaHidden">
+    <div role="main" aria-label="Schedules" class="loading-view-container" [ngStyle]="{'margin-top': listMargin}" *ngIf="!searchToggle">
+      <div class="spinner-container" *ngIf="loading && !voiceOverEnabled">
+        <ion-spinner></ion-spinner>
+      </div>
+      <!-- the list of schedules whose stops are selected as favorite -->
+      <ion-grid *ngIf="topSchedules.length > 0">
+        <ion-row *ngFor="let schedule of topSchedules">
+          <!-- using a div messes with the grid, so we need to use an extra (empty) row instead -->
+          <ion-row role="complementary" [attr.aria-label]="speakRouteInfo(schedule)" class="schedule-item" *ngIf="shouldDisplay(schedule.routeId, schedule.directionId)">
+
+              <ion-col col-10>
+                <ion-row class="route" align-items-center (click)="showDests(schedule);logRoutePageBtn(schedule)" tappable>
+                  <!-- the square to the left shows the name of the route and direction -->
+                  <ion-col class="title" role="link" [attr.aria-label]="speakRouteInfo(schedule)" tabindex="0">
+                    <span aria-hidden="true">{{schedule.routeShortName}}</span>
+                  </ion-col>
+
+                  <ion-col id="trip_headsign">
+                    <ion-scroll scrollX="true" class="headsign">
+                      <span style="padding-left: 10px; padding-right:10px" role="link" [attr.aria-label]="speakHeadsignInfo(schedule)" tabindex="0">
+                        {{showDirection(schedule.directionId) + stringUtilityService.directionStringTrim(schedule.tripHeadsign)}}
+                      </span>
+                    </ion-scroll>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="stop" id="stop_name" nowrap>
+                  <ion-col col-11 (click)="showStopPage(schedule);logStopPageBtn(schedule)" tappable>
+                    <ion-scroll scrollX="true" class="item">
+                      <span style="padding-left:10px; padding-right:10px" role="link" [attr.aria-label]="speakStopInfo(schedule)" tabindex="0">{{schedule.stopName}}</span>
+                    </ion-scroll>
+                  </ion-col>
+
+                  <ion-col>
+                    <div class="star-icon" role="button" (click)="unselectStop(schedule.stopId)" aria-label="Stop marked as favorite. Unmark" tabindex="0" tappable></div>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+
+              <!-- the right square displays the estimated time of arrival -->
+              <ion-col class="time">
+                <ion-row>
+                  <div [attr.aria-hidden]="ariaHidden" [attr.aria-label]="speakArrivalInfo(schedule)" style="display: none" tabindex="0">{{speakArrivalInfo(schedule)}}</div>
+                  <div aria-hidden="true" [class.realtime-icon]="schedule.predicted && !timeUtilityService.hasSwitched(schedule)"><strong>{{timeUtilityService.showArrivalHourMin(schedule)}}</strong></div>
+                </ion-row>
+                <ion-row *ngFor="let arrival of schedule.upcomingArrivals">
+                  <div aria-hidden="true" class="small-time" [class.realtime-icon]="arrival.predicted && !timeUtilityService.hasSwitched(arrival)">{{timeUtilityService.showArrivalHourMin(arrival)}}</div>
+                </ion-row>
+                <!-- <div aria-hidden="true" class="minute">min</div> -->
+              </ion-col>
+          </ion-row>
+        </ion-row>
+      </ion-grid>
+
+      <!-- the list of schedules whose stops are not selected as favorite -->
+      <ion-grid>
+        <ion-row *ngFor="let schedule of nearbySchedules">
+          <!-- using a div messes with the grid, so we need to use an extra (empty) row instead -->
+          <ion-row role="complementary" [attr.aria-label]="speakRouteInfo(schedule)" class="schedule-item" *ngIf="notFavStop(schedule.stopId) && shouldDisplay(schedule.routeId, schedule.directionId)">
+
+              <ion-col col-10>
+                <ion-row class="route" align-items-center (click)="showDests(schedule);logRoutePageBtn(schedule)"tappable>
+                  <!-- the square to the left shows the name of the route and direction -->
+                  <ion-col class="title" role="link" [attr.aria-label]="speakRouteInfo(schedule)" tabindex="0">
+                    <span aria-hidden="true">{{schedule.routeShortName}}</span>
+                  </ion-col>
+
+                  <ion-col id="trip_headsign">
+                    <ion-scroll scrollX="true" class="headsign">
+                      <span style="padding-left: 10px; padding-right:10px" role="link" [attr.aria-label]="speakHeadsignInfo(schedule)" tabindex="0">
+                        {{showDirection(schedule.directionId) + stringUtilityService.directionStringTrim(schedule.tripHeadsign)}}
+                      </span>
+                    </ion-scroll>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="stop" id="stop_name" nowrap>
+                  <ion-col col-11 (click)="showStopPage(schedule);logStopPageBtn(schedule)" tappable>
+                    <ion-scroll scrollX="true" class="item" >
+                      <span style="padding-left:10px; padding-right:10px" role="link" [attr.aria-label]="speakStopInfo(schedule)" tabindex="0">{{schedule.stopName}}</span>
+                    </ion-scroll>
+                  </ion-col>
+
+                  <ion-col>
+                    <div class="star-icon-outline" role="button" (click)="selectStop(schedule.stopId)" aria-label="Mark stop as favorite" tabindex="0" tappable></div>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+
+              <!-- the right square displays the estimated time of arrival -->
+              <ion-col class="time">
+                <ion-row>
+                  <div [attr.aria-hidden]="ariaHidden" [attr.aria-label]="speakArrivalInfo(schedule)" style="display: none" tabindex="0">{{speakArrivalInfo(schedule)}}</div>
+                  <div aria-hidden="true" [class.realtime-icon]="schedule.predicted && !timeUtilityService.hasSwitched(schedule)"><strong>{{timeUtilityService.showArrivalHourMin(schedule)}}</strong></div>
+                </ion-row>
+                <ion-row *ngFor="let arrival of schedule.upcomingArrivals">
+                  <div aria-hidden="true" class="small-time" [class.realtime-icon]="arrival.predicted && !timeUtilityService.hasSwitched(arrival)">{{timeUtilityService.showArrivalHourMin(arrival)}}</div>
+                </ion-row>
+                <!-- <div aria-hidden="true" class="minute">min</div> -->
+              </ion-col>
+          </ion-row>
+        </ion-row>
+      </ion-grid>
+
+    </div>
+</ion-content>

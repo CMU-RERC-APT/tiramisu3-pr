@@ -1,0 +1,62 @@
+<ion-header>
+    <ion-navbar class="set-nav" color="primary">
+        <div class = "settings" id ="header" tableindex="0">
+          <ion-icon name="settings" id="settingsBtn"></ion-icon>
+        </div>      
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+   
+   <div class ="collecting-map-info">
+    <ion-list>
+      <ion-item>
+        <ion-label>Map Opened On Start(default)</ion-label>
+        <ion-toggle [checked] = "getVal('map_on_start')" (ionChange)="write_Settings($event,'show_map_on_start')"></ion-toggle>
+      </ion-item>
+    </ion-list>
+   </div>
+
+    <div class="infoCollection">
+      <ion-col>
+        Please provide the following accessibility information to help us improve the app for you
+      </ion-col>
+   </div>
+
+   <ion-list text-wrap id="settingsOption">
+      <ion-item>
+        <ion-label>Do you need a seat on the bus for health reasons?</ion-label>
+        <ion-checkbox [checked]="getVal('need_seat')" (ionChange)="write_Settings($event,'need_seat')">{{value}}</ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Blind or low vision</ion-label>
+        <ion-checkbox [checked]="getVal('is_blind')" (ionChange)= "write_Settings($event,'is_blind')" click></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Cane or walker user</ion-label>
+        <ion-checkbox [checked]="getVal('walker_user')" (ionChange)= "write_Settings($event,'walker_user')" click></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Cognitive disability</ion-label>
+        <ion-checkbox [checked]="getVal('cog_disab')" (ionChange)= "write_Settings($event,'cog_disab')" click></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Deaf or hard of hearing</ion-label>
+        <ion-checkbox [checked]="getVal('is_deaf')" (ionChange)= "write_Settings($event, 'is_deaf')" click></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Wheelchair or scooter user</ion-label>
+        <ion-checkbox [checked]="getVal('scooter_user')" (ionChange)= "write_Settings($event,'scooter_user')" click></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Other disability</ion-label>
+        <ion-checkbox [checked]="getVal('other')" (ionChange)= "write_Settings($event,'other')" click></ion-checkbox>
+      </ion-item>
+   </ion-list>
+</ion-content>

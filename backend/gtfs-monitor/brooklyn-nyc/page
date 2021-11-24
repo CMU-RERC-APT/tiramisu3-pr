@@ -1,0 +1,527 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+<title>mta.info | Developer Agreement for Access to Data Feeds</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<link rel="shortcut icon" href="/siteimages/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/css/base.css">
+<link rel="stylesheet" type="text/css" href="/css/grid.css">
+<link rel="stylesheet" type="text/css" href="/css/topbar.css">
+<link rel="stylesheet" type="text/css" href="/css/formalize.css">
+<!-- <link rel="stylesheet" type="text/css" href="/css/jquery.datepick.css"> -->
+
+<!-- jQuery include should be at the top -->
+<script language="javascript" type="text/javascript" src="/js/jquery-1.4.4.min.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139746469-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-139746469-1');
+</script>
+
+<link rel="stylesheet" type="text/css" href="/css/template.css">
+
+
+
+<link rel="stylesheet" type="text/css" href="dev.css" />
+<script language="javascript" type="text/javascript" src="/js/hide.js"></script>
+<style type="text/css">
+
+#contentbox h2 {margin-bottom:0;}
+#contentbox .mta-developer-data {
+	display:none;
+	padding: 1em;
+	margin-bottom: 1.5em;
+	background: #e7e7e7;
+	border: 1px solid #b4b4b4;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	behavior: url(/css/border-radius.htc);
+}
+</style>
+
+
+		<!--[if lt IE 9]>
+			<style>.roundCorners {border: 1px solid #b4b4b4;-moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;background: #fff;behavior: url(/css/border-radius.htc);}</style>
+		<![endif]-->
+	
+<!--[if IE 6]>
+<style>
+#topbar { margin: 0; padding:0;	height: 122px; width: 961px;}
+#horizontalcssmenu ul#cssmenu1 li{ position: relative; display: inline;	float: left; border: none; }
+</style>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="/css/print.css" media="print">
+</head>
+
+<body>
+		<div id="skip-navigation">
+    <a href="#main-content">Skip to main content</a>
+  </div>
+<div id="mainbox">
+
+		
+	<div id="topbar">
+
+
+
+		<div id="branding">
+
+		<a href="http://www.mta.info"><img src="/template/images/mta_info.gif" alt="To MTA.info homepage"></a>
+
+		</div>
+
+
+
+		<div id="search">
+
+			<ul id="topbar-links">
+
+				<li class="list_h" style="margin-left:4px;"><a href="/accessibility">Accessibility</a></li>
+
+				<li class="list_h" style="margin-left:4px;"><a href="http://assistive.usablenet.com/tt/http://www.mta.info">Text-only</a></li>
+
+				<li class="list_h" style="margin-left:4px;"><a href="/selfserve">Customer Self-Service</a></li>
+
+				<li class="list_h" style="margin-left:4px;"><a href="/mta/employment/">Employment</a></li>
+
+				<li class="list_h" style="margin-left:4px;"><a href="/faqs.htm">FAQs/Contact Us</a></li>
+
+			</ul><br />
+
+						<div id="search-box" style="width:230px; height:32px; float:right; margin-top:4px; margin-right:0; padding-right:0;">
+
+				<form id="searchform" method="get" action="http://search.mta.info/search" style="margin:0; padding:0; height:32px; float:left;">
+
+					<input type="hidden" name="site" value="my_collection"/>
+
+					<input type="hidden" name="client" value="my_collection"/>
+
+					<input type="hidden" name="proxystylesheet" value="my_collection"/>
+
+					<input type="hidden" name="output" value="xml_no_dtd"/>
+
+					<!--	<label for="searchinputbox" style="margin-left:-999px; margin-top:0; font-size:10px;">Enter search term:</label>-->
+
+					<input type="text" name="q" id="searchinputbox" alt="searchinputbox" size="20" maxlength="255" value="" style="margin-right:6px;float:left;" aria-label="textbox for Search"/><input type="submit" name="btnG" value="search" id="searchbutton" style="padding:1px 8px; float:right; margin-left:0;margin-top:-1px;">
+
+				</form>
+
+			</div>
+					</div>
+
+<div class="special-banner-content" style="clear: both; text-align:center; margin-top:-1em;">
+	<!--p style="padding-bottom:0; padding-top:0; margin-bottom:0.5em;"><span style="font-weight: bold; color: red; margin-bottom:0.5em;"><a href="http://www.lirrsummerschedule.com/" style="color:red; font-size:1.3em;">In light of Amtrak’s emergency repair work at Penn Station July 10 &ndash; September 1<br />there will be some disruptions to Long Island Rail Road service.</a></span> <span style="padding-bottom:0; padding-top:0; margin-top: 0; margin-bottom:0.5em; font-size:1em;"><a href="http://www.lirrsummerschedule.com/" style="color:red; font-weight:bold; font-size:1em;">Click here for more information</a></p-->
+
+				<!-- CORONA VIRUS UPDATE -->	
+				<div class="rtecenter" style="margin:0 0 1em 0; padding: 0.5em 1.5em; text-align:left; color:#000; background-color:#17f; font-size:14px;"><strong>Coronavirus updates:  MTA Service During the Coronavirus Pandemic, </strong><a href="https://new.mta.info/coronavirus" style="text-decoration: none;color: yellow !important;" target="_blank">Read more</a></div>
+				<!-- CORONA VIRUS UPDATE -->
+ </div>
+
+		<div id="horizontalcssmenu" style="clear: both;">
+
+			<ul id="cssmenu1">
+
+					<li style="width: 75px; border-left: none;"><a href="http://www.mta.info" style="padding-left:18px;">Home</a>
+
+						<ul>
+
+						<li><a href="http://www.mta.info">MTA Home</a></li>
+
+						<li><a href="http://www.mta.info/nyct">NYC Subways and Buses</a></li>
+
+						<li><a href="http://www.mta.info/lirr">Long Island Rail Road</a></li>
+
+						<li><a href="http://www.mta.info/mnr">Metro-North Railroad</a></li>
+
+						<li><a href="http://www.mta.info/bandt">Bridges and Tunnels</a></li>
+
+						<li><a href="http://web.mta.info/capital">MTA Capital Program</a></li>
+
+					</ul>
+
+				</li>
+
+				<li style="width: 99px;"><a href="http://www.mta.info/schedules">Schedules</a></li>
+
+				<li style="width: 117px;"><a href="http://web.mta.info/fares">Fares &amp; Tolls</a></li>
+
+				<li style="width: 65px;"><a href="http://web.mta.info/maps">Maps</a></li>
+
+				<li style="width: 199px;"><a href="http://web.mta.info/service">Planned Service Changes</a></li>
+
+				<li style="width: 96px;"><a href="http://web.mta.info/about">MTA Info</a></li>
+
+				<li style="width: 183px;"><a href="http://web.mta.info/business">Doing Business With Us</a></li>
+
+				<li style="width: 119px;"><a href="http://web.mta.info/accountability/" style="padding-right:23px;">Transparency</a>
+
+					<ul>
+
+						<li><a href="http://web.mta.info/accountability">Main Page</a></li>
+
+						<li><a href="http://web.mta.info/mta/boardmaterials.html">Board Materials</a></li>
+
+						<li><a href="http://web.mta.info/mta/budget/">Budget Info</a></li>
+
+						<li><a href="http://web.mta.info/capital">Capital Program Info</a></li>
+
+						<li><a href="http://web.mta.info/capitaldashboard/CPDHome.html">Capital Program Dashboard</a></li>
+
+						<li><a href="http://web.mta.info/mta/investor/">Investor Information</a></li>
+
+						<li><a href="http://web.mta.info/mta/leadership/">MTA Leadership</a></li>
+
+						<li><a href="http://web.mta.info/persdashboard/performance14.html">Performance Indicators</a></li>
+
+						<li><a href="http://www.mta.info/mta-news">Press Releases and News</a></li>
+
+						<li><a href="http://web.mta.info/mta/news/hearings">Public Hearings</a></li>
+
+						<li><a class="last" href="http://web.mta.info/mta/news/hearings/index-reinvention.html">Transportation Reinvention Commission</a></li>
+
+
+					</ul>
+
+				</li>
+
+			</ul>
+
+		</div>
+
+</div> <!-- close topbar -->
+
+
+
+
+
+
+		<div id="contentbox" style="margin:20px 0 10px 0; padding:0;">
+		<!-- skip navigation anchor -->
+	<a name="main-content">&nbsp;</a>
+
+		<!-- Enter Content Here -->
+
+	<div class="roundCorners push-1 span-72 pad-10" >
+
+<h1>Agreement for Access to Metropolitan Transportation Authority ("MTA") Data Feeds</h1>
+<div id="agreement">
+		<p>
+			The MTA's data for the transportation services of MTA's operating agencies is made available as a public service.  Members of the public can access and download this data through applications ("Apps") that have been developed by MTA and are available for download at <a href="http://www.mta.info/DevelopersData">http://www.mta.info/DevelopersData</a>  In addition, the MTA makes this data available to App developers who agree to the provisions of this access agreement and comply with its requirements. </p>
+		<p>Certain MTA data feeds are accessible only through issuance of an API key.  An App developer who agrees to the terms and conditions of this access agreement by clicking "I agree"  and completing and submitting the <a href="http://datamine.mta.info/user/register">Online Registration Form</a> will be issued a Developer's API key.  The key will enable the developer to access the MTA's data feeds. </p>
+		<p>
+			In all instances, clicking "I agree" obligates third party developers to adhere to the Terms and Conditions.  This agreement authorizes the developer to download and <em>host the data on the developer's or a third party's server</em> and to make the data available to others who will access the server provided by the developer.</p>
+		<p>
+			MTA prohibits the development of an app that would make the data available to others directly from MTA's server(s). Violation of this policy may result in deactivation of a Developer API key and denial of access to MTA data feeds.</p>
+		<h2>Terms of Agreement</h2>
+		<p>
+			The MTA's data feeds are provided without charge to developers who agree to the following:</p>
+		<ol>
+			<li>
+				In developing your app, you will provide that the MTA data feed is available to others only from a non-MTA server. Accordingly, you will download and store the MTA data feed on a non-MTA server which users of your App will access in order to obtain data. MTA prohibits the development of an app that would make the data available to others directly from MTA's server(s). </li>
+			<li>
+				Unless you have an MTA license for your app, you will not state or imply in any manner that your app is licensed by MTA or that the data is provided by an MTA server.  You may, however, indicate the data was obtained by you from an MTA server and is stored on your own server.  When using MTA Real-Time data feeds, if there is a lag time of more than 1 minute between the real time of the MTA data and the actual time of the MTA data as accessed from your server, you will also indicate the information provided by your app to the end-user may not be real time because of the lag time between the real time of the MTA data and the MTA data as provided by you. </li>
+			<li>
+				You will not state or imply that the data is accurate, complete, or timely.  You may however, state that you obtained the data from MTA and, through your own server, are redistributing it. </li>
+			<li>
+				You will not use the data or make it available in any manner that is inaccurate, misleading, false, or unlawful. </li>
+			<li>
+				You will not modify or delete any of the data.  You may, however, create an App that uses some but not all of the data.</li>
+			<li>
+				You will access and review MTA's requirements for when you need a license from MTA in order to distribute you app.  Go to <a href="https://new.mta.info/developers/licensing-info">License Information</a> for those requirements.  If MTA's requirements require that you have a license, you agree to promptly request a license by following the instructions on the <a href="https://new.mta.info/developers/licensing-info">License Information</a> web page.</li>
+			<li>
+				MTA provides you with and you accept the data and the data feed "as is" and without any MTA warranty or representation that the data or the data feed is merchantable, accurate or complete, suitable or fit for a particular purpose, compatible, available, reliable, non-infringing, secure, or virus free.</li>
+			<li>
+				Your access to and receipt of the data feed is entirely at your own risk. You are solely responsible for the development and use of your app, including but not limited to determining and providing within and as part of the development of your App for its design, functionality, and security features.</li>
+			<li>
+				It is your responsibility to comply with all applicable laws including any laws dealing with the ability of a person with a disability to access and use your App.  Even if such laws do not apply, MTA recommends and requests that insofar as applicable and relevant, you include such accessibility and use in the development of your App.</li>
+			</ol>
+				<p>MTA reserves the right at any time for any reason or no reason and without notice to you to:</p>
+		<ol type="A">
+		<li>Terminate or suspend the availability of the data feed.</li>
+		<li>Permanently or temporarily terminate your access to the data feed because MTA has determined in its sole discretion that you have violated this agreement. </li>
+		<li>Change any or all of the provisions of this access agreement, including a change which would require you to change your app or result in you not being eligible to continue to access the data feed.</li>
+		</ol>
+		<p>
+			MTA will endeavor to inform you in advance of any of the above actions but has no obligation to do so.</p>
+		 <p><a class="hide" onclick="showdiv('mta-data-links');" href="#data"><strong>Yes, I agree to these terms and conditions.</strong></a>
+    &nbsp;<em>Please allow me to view and download the data.</em></p>
+</div> <!-- //agreement -->
+
+
+	<a name="data"></a><div id="mta-data-links" class="span-64 mta-developer-data">
+
+	<h2>Real-Time Data Feeds</h2>
+
+	<h3>MTA All-Agency</h3>
+		<p>
+		<ul class="arrow">
+			<li><a href="/status/serviceStatus.txt">Service Status</a> - refreshed every minute: <!-- span style="margin:20px 50px 0 50px; font-size:14px; padding:0; font-weight:bold; color:#990033;">Service Status feed ocurrently unavailable due to technical issues with our data feeds.</span --></li>
+                          <li><a href="http://web.mta.info/status/ServiceStatusSubway.xml">Service Status by individual subway line</a> - refreshed every minute</li>
+                          <li><a href="http://web.mta.info/status/ServiceStatusBus.xml">Service Status by Individual bus line</a> - refreshed every minute</li>
+		</ul>
+		</p>
+
+	<h3>MTA NYC Transit</h3>
+		<p>
+		<ul class="arrow">
+
+		   <li><a href="data/archives.html">Link shows archive of GTFS-RT from August 2018 <br>which shows historical train arrival data for the B-Division (letter trains)</a></li>
+			
+			<li><a href="http://advisory.mtanyct.info/eedevwebsvc/allequipments.aspx">Elevator/Escalator Listing</a> (This feed link will get decommissioned on 11/30/2020. Use new link provided below)
+				<ul class="arrow"><li><a href="resources/nyct/EES/EENotes.pdf" style="font-weight:normal;">Tag/Field Definitions for XML Feed</a></li></ul>
+			</li>
+			<li><a href="https://api.mta.info">Elevator/Escalator Listing</a>
+				<ul class="arrow"><li><a href="resources/nyct/EES/EENotes.pdf" style="font-weight:normal;">Tag/Field Definitions for XML Feed</a></li></ul>
+			</li>
+
+			<li><a href="data/nyct/nyct_ene.xml">Elevator/Escalator Status</a> (This feed link will get decommissioned on 11/30/2020. Use new link provided below)
+				<ul class="arrow"><li><a href="resources/nyct/EES/ElevEscDefinitions.pdf" style="font-weight:normal;">Tag/Field Definitions for XML Feed</a></li></ul>
+			</li>
+			<li><a href="https://api.mta.info">Elevator/Escalator Status</a>
+				<ul class="arrow"><li><a href="resources/nyct/EES/ElevEscDefinitions.pdf" style="font-weight:normal;">Tag/Field Definitions for XML Feed</a></li></ul>
+			</li>
+					
+			<li><a href="http://advisory.mtanyct.info/LPUWebServices/CurrentLostProperty.aspx">Lost and Found Data</a> - refreshed every hour</li>
+			<li><a href="http://bustime.mta.info/wiki/Developers/Index">MTA Bus Time</a>&reg;</li>
+			<li><a href="https://api.mta.info">MTA Subway Time</a>&reg;</li>
+			<li><a href="http://web.mta.info/developers/data/nyct/plannedwork.xml">Planned Service Changes</a> - refreshed every 20 minutes</li>
+		</ul>
+		</p>
+
+	<h3>MTA Long Island Rail Road</h3>
+	<p>
+		<ul class="arrow">
+			<li><a href="http://datamine.mta.info">Long Island Rail Road Train Time&reg;</a></li>
+		</ul>
+	</p>
+
+	<h3>MTA Metro-North Railroad</h3>
+	<p>
+		<ul class="arrow">
+			<li><a href="http://datamine.mta.info">Metro-North Railroad Train Time&reg;</a></li>
+		</ul>
+	</p>
+
+	<h2>Static Data Feeds</h2>
+
+	<h3>MTA All-Agency</h3>
+
+		<p>
+		<ul class="arrow">
+		<li><a href="https://developers.google.com/transit/gtfs/">GTFS</a> Schedule Data<br />
+		MTA Subway, bus and commuter rail GTFS schedule data is refreshed whenever warranted by service changes, on average about every 4 months.  We recommend downloading GTFS files in Internet Explorer v8 and above, Firefox, Safari, Chrome, or Opera.</p>
+			<ul>
+			<li><a href="data/nyct/subway/google_transit.zip">New York City Transit Subway</a>
+						Updated March 15, 2021</li>
+			<li><strong>New York City Transit Bus</strong>
+			<ul class="arrow">
+			<li><a href="data/nyct/bus/google_transit_bronx.zip">Bronx</a> &ndash; Updated April 01, 2021</li>
+			<li><a href="data/nyct/bus/google_transit_brooklyn.zip">Brooklyn</a> &ndash; Updated April 01, 2021</li>
+			<li><a href="data/nyct/bus/google_transit_manhattan.zip">Manhattan</a> &ndash; Updated April 20, 2021</li>
+			<li><a href="data/nyct/bus/google_transit_queens.zip">Queens</a> &ndash; Updated April 01, 2021</li>
+			<li><a href="data/nyct/bus/google_transit_staten_island.zip">Staten Island</a> &ndash; Updated April 01, 2021</li>
+			</ul>
+			</li>
+			<li><a href="data/lirr/google_transit.zip">Long Island Rail Road</a> &ndash;
+			Updated April 24, 2021				<ul class="arrow">
+					<li><a href="/developers/data/lirr/lirr_gtfs.json">GTFS data, JSON format</a></li>
+					<li><a href="/developers/data/lirr/lirr_gtfs_header.json">Schedule version only (JSON format)</a></li>
+					<li><a href="/developers/data/lirr/lirr_gtfs.xml">GTFS data in XML format</a></li>
+					<li><a href="/developers/data/lirr/lirr_gtfs_header.xml">Schedule version only (XML format)</a></li>
+				</ul>
+			</li>
+			<li><a href="data/mnr/google_transit.zip" title="It contains schedule changes for weekends and Mondays from October 3 – November 16, and the new base schedules through April 2, 2016">Metro-North Railroad</a>
+			Updated April 25, 2021</li>
+			<li><a href="data/busco/google_transit.zip">Bus Company</a> Updated April 20, 2021</li><br>
+			</ul>
+			</li>
+
+			<li><a href="http://web.mta.info/capitaldashboard/cdbxml/cdbxml.zip">Capital Program Dashboard Data</a> &ndash; 2015 3rd Quarter </li>
+			<li><a href="aft.html">MTA Arts &amp; Design Resources</a></li>
+			<li><a href="resources/line_colors.htm">MTA Line Colors</a> &ndash; Updated November 10, 2020</li>
+			<li><a href="http://web.mta.info/persdashboard/perxml/MTA_Performance_Datall.zip">Performance Data</a> &ndash; 
+ last updated July 2018
+(1 MB)
+<br>
+
+            <!?php
+// print(date("m/j/y h:i", $last_change));
+// this gets ex: 07/27/13
+
+//echo getcwd() . "\n";
+
+//$last_change = filectime($Datall_pathfile);
+//echo $last_change  . " is last change\n";
+/*file creation date is approximated to last change
+
+echo "\nLast updated:" . strftime('%B %d',$last_change);
+*/
+
+?>
+
+			  <ul class="arrow">
+			<li><a href="performance.html" style="font-weight:normal;">List of data sets in this package</a></li>
+			</ul></li>
+
+ <li><a href="http://web.mta.info/MTACommendations/MTA_Commendations_and_Concerns_Data.zip">MTA Commendations and Concerns</a> <br /> <!-- last updated April 22, 2015 (349 K) -->
+
+            
+ last updated December 31, 1969
+(0)			  </li>
+			</ul>
+	  </p>
+
+
+	  <h3>MTA NYC Transit</h3>
+	  <p><ul class="arrow">
+		<li><a href="https://atisdata.s3.amazonaws.com/Station/Stations.csv">Station Locations</a> &ndash; Updated February 17, 2021</li>
+		<li><a href="data/nyct/subway/StationComplexes.csv">Station Complexes</a> &ndash; Updated February 16, 2021</li>
+		<li><a href="fare.html">Fare Data</a> &ndash; refreshed weekly</li>
+		<li><a href="MTA-Bus-Time-historical-data.html">Historical MTA Bus Time<sup>&reg;</sup> Data</a></li>
+		<li><a href="MTA-Subway-Time-historical-data.html">Historical MTA Subway Time<sup>&reg;</sup> Data</a></li>
+		<li><strong>Historic Train  Movements for 1/2/3 and 4/5/6 trains for May, 2011</strong>
+			<ul class="arrow">
+			<li> <a href="data/nyct/historic/A Division Historical Data Documentation.txt" style="font-weight:normal;">Documentation</a> </li>
+			<li><a href="data/nyct/historic/A Division Historical Data May 2011.zip" style="font-weight:normal;">Historical Data May 2011</a> (23MB) </li>
+			</ul>
+		</li>
+		<li><a href="sbwy_entrance.html">Subway Entrance &amp; Exit GIS Data</a> &ndash; Updated May 06, 2015		</li>
+		<li><a href="data/nyct/bus/Bus_Shapefiles.zip">Bus GIS Shapefiles</a> &ndash; Updated 2013</li>
+		<li><a href="https://atisdata.s3.amazonaws.com/OMNY/OMNY_Stops.csv">OMNY-Activated Subway Stations</a></li>
+		<li><a href="https://atisdata.s3.amazonaws.com/OMNY/OMNY_Routes.csv">OMNY-Activated Bus Routes</a></li>
+		<li><a href="turnstile.html">Turnstile Usage Data</a> &ndash; refreshed weekly</li>
+		</ul>
+	</p>
+
+	  <h3>MTA Bridges and Tunnels</h3>
+
+	 <p>
+	 <ul class="arrow">
+		<li><a href="data/bandt/trafficdata.html">Daily Plaza Traffic Data</a></li>
+			    <li><a href="data/bandt/Tolldata.html">Toll Data</a> &ndash;  Updated May 28, 2019		</li>
+		<li><a href="dataFeedsBT.html">Tunnel Beacon Coordinates</a>
+		</li>
+	</ul>
+	</p>
+
+		</div>
+
+	</div>
+
+<!-- End Page Content -->
+
+	<div id="Google-skyscraper-ad" class="push-2 span-16 last roundCorners">
+
+				<script type="text/javascript">
+		<!--
+		google_ad_client = "pub-0982027042052701";
+		/* 160x600, created 5/6/11 */
+		google_ad_slot = "8916589146";
+		google_ad_width = 160;
+		google_ad_height = 600;
+		//-->
+		</script>
+		<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+	</div>
+</div> <!-- close contentbox -->
+
+<!-- JavaScript Includes -->
+<script type="text/javascript" src="/js/csshorizontalmenu.js"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#printfriendly").click(function() {
+		var s = document.location.search;
+		if (!s)
+			window.open(document.location.pathname + '?print=1', '', 'scrollbars=1');
+		else
+			window.open(document.location.pathname + s + '&print=1', '', 'scrollbars=1');
+		return false;
+	});
+});
+</script>
+<script type="text/javascript">
+/*<![CDATA[*/
+(function() {
+var sz = document.createElement('script'); sz.type = 'text/javascript'; sz.async = true;
+sz.src = '//siteimproveanalytics.com/js/siteanalyze_44028.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz, s);
+})();
+/*]]>*/
+</script> 
+
+<div class="container clear">
+	<div class="span-15" style="text-align: left;margin-right: 12px;">
+		<div id="translate">
+			<div id="google_translate_element">
+				<div id="temp_GT" class="span-15">
+					<ul style="margin: 0;">
+						<li class="list_f last_list_f first_list_f"><span style="color: #0055AA; font-weight: bold; margin-right: 5px;">Google Translate</span><img style="vertical-align: baseline;" src="/siteimages/google_logo.png" alt="" /></li>
+					</ul>
+				</div>
+			</div><!-- close google_translate_element -->
+		</div><!-- close translate -->
+	</div><!-- close span-14 last -->
+</div> <!-- Close of Container -->
+
+
+<script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+	pageLanguage: 'en',
+	layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+}
+
+$("#temp_GT").click(function() {
+	var fileref = document.createElement('script');
+		fileref.setAttribute("type", "text/javascript");
+		fileref.setAttribute("src", "http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit");
+
+		document.getElementsByTagName("head")[0].appendChild(fileref);
+	$("#temp_GT").hide();
+});
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-51590636-1', 'mta.info');
+  ga('send', 'pageview');
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 970467739;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/970467739/?guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+</div> <!-- close mainbox -->
+</div>
+</body>
+</html>

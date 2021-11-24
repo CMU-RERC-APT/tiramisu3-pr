@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-navbar class="route-nav">
+    </ion-navbar>
+</ion-header>
+
+<ion-content id="schedule_page">
+  <div class="schedule-stop-name">
+    {{schedule.stopName}}
+  </div>
+  <div class="today">
+    {{today}}
+  </div>
+
+  <div class="loading-view-container">
+
+    <div class="spinner-container" *ngIf="loading && !voiceOverEnabled">
+      <ion-spinner></ion-spinner>
+    </div>
+
+    <ion-list inset>
+      <ion-item *ngFor="let schedule of schedules">
+        <ion-row align-items-center class="schedule-row">
+          <ion-col col-6>
+            <div aria-hidden="false" [attr.aria-label]="speakArrivalHrMin(schedule)" style="display: none">{{speakArrivalHrMin(schedule)}}</div>
+            <div aria-hidden="true" *ngIf="timeUtilityService.showArrivalHour(schedule)>0" class="arrival-hour">
+              <strong>{{timeUtilityService.showArrivalHour(schedule)}}</strong> hr
+            </div>
+            <div aria-hidden="true" class="arrival-min" [class.schedule-realtime-icon]="schedule.predicted && !timeUtilityService.hasSwitched(schedule)">
+              <strong>{{timeUtilityService.showArrivalRemainingMin(schedule)}}</strong> min
+            </div>
+          </ion-col>
+          <ion-col col-6>
+            <p class = "arrival-time">{{timeUtilityService.showArrivalTime(schedule)}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

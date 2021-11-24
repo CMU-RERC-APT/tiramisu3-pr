@@ -1,0 +1,26 @@
+.main {
+    background: #053F6A;
+    color: white;
+    font-family: "Trebuchet MS", sans-serif;
+}
+
+a:link {
+    color: white;
+}
+
+a:visited {
+    color: #cecece;
+}
+
+a:visited {
+    color: #cecece;
+}
+
+a:hover {
+    color: #afafaf;
+}
+
+.icon {
+    height: 50%;
+    width: auto;
+}

@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-navbar class="stop-nav" color="primary">
+        <div class="stop-title" id="header" tabindex="0">
+            {{stopName}}
+        </div>
+
+        <!-- ios -->
+        <ng-container *ngIf="is_ios">
+            <input type="checkbox" id="favorite" [checked]="isFav"/>
+            <div class="stop-star" role="button" [attr.aria-label]="speakStarButton()" (click)="toggleFavorite()" tappable>
+                <label for="favorite"><div style="width:100%;height:100%"></div></label>
+            </div>
+        </ng-container>
+
+        <!-- android -->
+        <ng-container *ngIf="!is_ios">
+            <input type="checkbox" id="favorite" [ngModel]="isFav" (click)="toggleFavorite()"/>
+            <div class="stop-star" role="button" [attr.aria-label]="speakStarButton()">
+                <label for="favorite"><div style="width:100%;height:100%"></div></label>
+            </div>
+        </ng-container>        
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="routes-on-stop" role="listbox" [attr.aria-label]="speakRoutesSummary()">
+        <ion-row *ngFor="let row of routesTable">
+            <ion-col *ngFor="let col of row" role="link" (click)="showRoutePage(col.routeId)" tappable>
+                {{col.str}}
+            </ion-col>
+        </ion-row>
+    </div>
+    <div class="loading-view-container">
+        <div aria-hidden="true" id="stop-map">
+        </div>
+        <div class="spinner-container" *ngIf="loading">
+            <ion-spinner></ion-spinner>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-navbar class="route-nav">
+  </ion-navbar>
+</ion-header>
+
+<ion-content id="route-page">
+  <div class="route-loading-container">
+    <div id="route-map-container" aria-hidden="true">
+      <div id="route-map"></div>
+    </div>
+    <div class="spinner-container" *ngIf="mapLoading">
+      <ion-spinner></ion-spinner>
+    </div>
+  </div>
+
+  <div class="spinner-container" *ngIf="scheduleLoading && !voiceOverEnabled">
+    <ion-spinner></ion-spinner>
+  </div>
+
+  <ion-scroll scrollY="true" id="stop_list" class="loading-view-container route-margin">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="shape-container">
+          <ng-container *ngFor="let stop of stopsScheduleList">
+            <!--div class="shape-row" *ngIf = "stop.scheduledArrivalTime"-->
+            <div class="shape-row">
+              <div class="stop-shape" [class.current-stop-shape]="stop.stopId==schedule.stopId"></div>
+            </div>
+          </ng-container>
+        </ion-col>
+        <ion-col col-11>
+          <ion-row *ngFor="let stop of stopsScheduleList" class="list-stop" [attr.id]="stop.stopId" [class.list-stop-passed]="timeUtilityService.isInThePast(stop)" nowrap>
+              <!--ion-item class="list-stop" *ngIf = "stop.scheduledArrivalTime"-->
+              <ion-col id="stop" col-8>
+                <ion-scroll scrollX="true" scrollY="false" class="item stop-scroll">
+                  <!--<button ion-button clear color="dark" class = "stop-name" [attr.aria-label]="speakStopName(stop)+speakArrivalMin(stop)">{{stop.stopName}}</button>-->
+                  <div tabindex="0" aria-hidden="false" style="display: none" [attr.aria-label]="speakStopName(stop)+speakArrivalMin(stop)">{{speakStopName(stop)+speakArrivalMin(stop)}}</div>
+                  <span aria-hidden="true" class="stop-name">{{stop.stopName}}</span>
+                </ion-scroll>
+              </ion-col>
+
+              <ion-col aria-hidden="true" class="arrival-col" col-3>
+                <div class="arrival-min" [class.route-realtime-icon]="stop.predicted && !this.timeUtilityService.hasSwitched(stop)"><strong>{{timeUtilityService.showAbsArrivalMin(stop)}}</strong> {{showMinAgo(stop)}}</div>
+                <div class="arrival-time">{{timeUtilityService.showArrivalTime(stop)}}</div>
+              </ion-col>
+
+              <ion-col tabindex="0" style="padding-right:0px" col-1>
+                <!-- ios -->
+                <ng-container *ngIf="is_ios">
+                  <input type="checkbox" [attr.id]="stop.stopId" [checked]="IsNotifyOn(stop.stopId)"/>
+                  <div class="notification-icon" role="button" aria-label="Toggle Alarm" (tap)="toggleNotification(stop)" tappable>
+                    <label [attr.for]="stop.stopId"><div style="width:100%;height:100%"></div></label>
+                  </div>
+                </ng-container>
+
+                <!-- android -->
+                <ng-container *ngIf="!is_ios">
+                  <input type="checkbox" [attr.id]="stop.stopId" [ngModel]="IsNotifyOn(stop.stopId)"/>
+                  <div class="notification-icon" role="button" aria-label="Toggle Alarm" (click)="toggleNotification(stop)" tappable>
+                    <label [attr.for]="stop.stopId"><div style="width:100%;height:100%"></div></label>
+                  </div>
+                </ng-container>
+              </ion-col>
+            </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-scroll>
+
+</ion-content>

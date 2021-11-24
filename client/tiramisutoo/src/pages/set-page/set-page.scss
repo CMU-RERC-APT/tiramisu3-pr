@@ -1,0 +1,49 @@
+page-set {
+    
+    .set-nav.toolbar{
+        color:white;
+        min-height: 48px;
+        padding-top: 3px;
+        padding-bottom: 5px;
+
+        ion-scroll{
+            height: 100%;
+        }
+
+        .back-button{
+            color: white;
+            padding-left: 10px;
+        }
+
+        div{
+            text-align: center;
+        }
+        
+        .toolbar-background {
+            background-color: #3472AF; 
+        }
+
+        .toolbar-content {
+            height: 100%;
+            line-height: 31px;
+        }
+
+    }
+
+    #settingsBtn {
+        font-size: 30px;
+    }
+
+    #settingsOption {
+        float: auto;
+    }
+
+    .infoCollection {
+        text-align: left-align;
+        white-space: normal;
+        font-size: 16px;
+        margin-bottom: 10px;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+}

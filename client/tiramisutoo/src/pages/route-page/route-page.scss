@@ -1,0 +1,202 @@
+input[type=checkbox]{
+  display: none;
+}
+
+.grid {
+    padding: 0px;
+}
+
+ion-content#route-page > scroll-content{
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+ion-scroll {
+    white-space: nowrap;
+}
+
+.route-margin{
+  top: 0px;
+  height: calc(100% - 237px);
+}
+
+.route-margin > scroll-content{
+  margin-top: 323px;
+}
+/*.tab-switch{
+
+  height:30px;
+
+  .switch-col{
+    color:white;
+    font-size:14px;
+    font-weight: bold;
+    background-color: #C7DEEF;
+    text-align: center;
+  }
+
+  input[type=radio]:checked + .switch-col{
+    background-color: #1E99F7;
+  }
+
+}*/
+
+.route-loading-container{
+  height: 230px;
+
+  .spinner-container{
+    height: 230px;
+
+    ion-spinner {
+      width: 35px;
+      height: 35px;
+    }
+  }
+}
+
+#route-map-container{
+  height: 230px;
+}
+
+#route-map{
+  z-index: 100;
+  height: 100%;
+  width: 100%;
+}
+
+.shape-container{
+  border-color: color($colors, primary);
+  border-style:solid;
+  border-width:0px;
+  border-right-width:5px;
+
+  z-index: 1;
+
+  padding-top: 9px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+
+  max-width: 15px;
+
+  .shape-row{
+    height: 50px;
+
+    .stop-shape{
+      float: right;
+      margin-right: -17px;
+      background:url("../assets/icon_set_v1.png") -120px -163px;
+      background-size: 209px 243px;
+      height: 19px;
+      width: 19px;
+      z-index: 10;
+      margin-top: 10px
+    }
+
+    .current-stop-shape{
+      background-position: -69px -163px;
+    }
+  }
+}
+
+ion-list[inset]{
+  margin:7px;
+  margin-left: 10px;
+}
+
+.list-stop.item{
+  height : 55px;
+  padding-left: 0;
+
+  .item-inner{
+    padding-right: 0px;
+  }
+}
+
+
+.stop-name{
+  font-size : 16px;
+  text-transform: none;
+  height: 100%;
+  padding-left: 0;
+  margin-left: 0;
+  width: 100%
+}
+
+ion-label{
+  margin-right: 0px;
+}
+
+.stop-scroll{
+  border-bottom-width: 0px !important;
+  //position: fixed;
+  height: 30px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.arrival-col{
+
+  //max-width: 20%;
+  position: relative;
+  padding-right: 0px;
+
+
+  .arrival-min{
+    strong{
+      font-size: 18px;
+    }
+    font-size: 12px;
+
+    min-width: 71px;
+    float: right;
+    margin-top: 5px;
+    padding-right: 5px;
+    text-align: right;
+    //padding-left: 5px;
+    //padding-right: 5px;
+  }
+
+  .arrival-time{
+    text-align: right;
+    margin-top: 3px;
+    padding-right: 5px;
+    font-size : 14px;
+    color : rgb(214, 214, 214);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  .route-realtime-icon{
+    background: url('../assets/icon_set_v1.png') 43px -15px;
+    background-repeat: no-repeat;
+    z-index: 3;
+  }
+}
+
+.notification-icon{
+  background: url("../assets/icon_set_v1.png");
+  background-size: 220px 265px;
+  height: 40px;
+  width: 45px;
+}
+
+input[type=checkbox]:not(:checked) + .notification-icon{
+  background-position: -10px -230px;
+}
+
+input[type=checkbox]:checked + .notification-icon{
+  background-position: -67px -230px;
+}
+
+.list-stop-passed{
+  color: rgb(214, 214, 214);
+}
+
+.list-stop-passed .stop-name{
+  color: rgb(214, 214, 214);
+}
+
+.list-stop-passed .notification-icon{
+  display: none;
+}

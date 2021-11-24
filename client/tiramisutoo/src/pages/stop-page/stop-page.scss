@@ -1,0 +1,94 @@
+page-stop {
+    
+    .stop-nav.toolbar{
+        color:white;
+        min-height: 48px;
+        padding-top: 3px;
+        padding-bottom: 5px;
+
+        ion-scroll{
+            height: 100%;
+        }
+
+        .back-button{
+            color: white;
+            padding-left: 10px;
+        }
+
+        div{
+            text-align: center;
+        }
+        
+        .toolbar-background {
+            background-color: #3472AF; 
+        }
+
+        .toolbar-content {
+            height: 100%;
+            line-height: 31px;
+        }
+
+        .stop-title{
+            display: inline-block;
+            vertical-align: middle;
+            font-weight: 500;
+            font-size: 18px;
+            width: 85%;
+            overflow-x: scroll;
+            white-space: nowrap;
+        }
+        .stop-star{
+            float: right;
+            width: 30px;
+            height: 30px;
+            background: url('../assets/icon_set_v1.png') -171px -48px;
+            background-size: 205px auto;
+            background-repeat: no-repeat;
+            
+        }
+
+        input[type="checkbox"]:checked + .stop-star{
+                background-position: -119px -48px;
+        }
+
+        input[type="checkbox"] {
+            display: None;
+        }
+
+
+    }
+
+    .routes-on-stop{
+        background-color: #9FD0FF;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+
+        ion-col:active{
+            background-color:#52A5F9;
+        };
+    }
+
+    #stop-map{
+        height: 100vh;
+        width: 100vw;
+    }
+
+    @media screen and (max-width: 240px){
+        .routes-on-stop{
+            font-size: 9px;
+        }
+    }
+
+    @media screen and (min-width: 241px) and (max-width: 360px){
+        .routes-on-stop{
+            font-size: 11px;
+        }
+    }
+
+    @media screen and (min-width: 361px){
+        .routes-on-stop{
+            font-size: 13px;
+        }
+    }
+}

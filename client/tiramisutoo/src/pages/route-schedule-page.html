@@ -1,0 +1,15 @@
+<ion-header>
+    <ion-navbar class="route-nav" color="primary">
+      <div class="route-title-name" id="header" tabindex="0">
+        {{ schedule.routeShortName }}
+      </div>
+      <div class="route-title-direction">
+        {{schedule.tripHeadsign}}
+      </div>
+    </ion-navbar>
+</ion-header>
+
+<ion-tabs tabsPlacement="top">
+  <ion-tab tabTitle="Route" [root]="routePage" [rootParams]="schedule" (ionSelect)="logSelectRouteTabBtn(schedule)" ></ion-tab>
+  <ion-tab tabTitle="Schedule" [root]="schedulePage" [rootParams]="schedule" (ionSelect)="logSelectScheduleTabBtn(schedule)" ></ion-tab>
+</ion-tabs>

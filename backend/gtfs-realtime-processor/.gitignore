@@ -1,0 +1,6 @@
+/bin/
+/target/
+/target/m2e-wtp/web-resources/META-INF/maven/GtfsRealtime/GtfsRealtime/pom.properties
+dependency-reduced-pom.xml
+*.class
+/bin/

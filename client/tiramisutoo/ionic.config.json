@@ -1,0 +1,18 @@
+{
+  "name": "Tiramisu",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/backendDev",
+      "proxyUrl": "http://onebusaway-test.us-east-1.elasticbeanstalk.com/"
+    },
+    {
+      "path": "/localbackend",
+      "proxyUrl": "http://localhost:8080/"
+    }
+  ],
+  "id": "com.tiramisutransit.tiramisu"
+}

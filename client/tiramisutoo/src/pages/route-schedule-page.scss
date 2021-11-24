@@ -1,0 +1,127 @@
+page-route-schedule {
+
+    .toolbar-background{
+        height: 100%;
+        border-width: 0;
+    }
+
+    .route-nav.toolbar{
+        color: white;
+        height: 80px;
+        padding-top: 3px;
+        padding-bottom: 5px;
+
+        ion-scroll{
+            height: 100%;
+        }
+
+        .back-button{
+            color: white;
+            padding-left: 10px;
+        }
+
+        div{
+            text-align: center;
+        }
+
+        .toolbar-background {
+            background-color: #3472AF;
+        }
+
+        .toolbar-content {
+            height: 100%;
+        }
+
+        .route-title-name{
+            font-size: 23px;
+            font-weight: bold;
+            /* To make the .route-title-direction overlay this element*/
+            z-index:-1;
+            position: absolute;
+            width: 90%; /* so that title is centered, 90% due to the back button at the left*/
+            padding-right: 10%;
+            padding-top: 8px;
+        }
+
+        .route-title-direction{
+            display: block;
+            font-size: 15px;
+            text-transform: uppercase;
+            width: 83%;
+            overflow-x: scroll;
+            white-space: nowrap;
+
+            /* To make it overlay .route-title-name element*/
+            position: absolute;
+            z-index: 2;
+        }
+
+        @media only screen and (max-device-width: 480px) {
+            .route-title-direction{
+                /* Make the entire toolbar scrollable*/
+                padding-top: 30px;
+            }
+        }
+
+        @media only screen and (min-device-width: 481px) {
+            .route-title-direction {
+                /* Make the entire toolbar scrollable*/
+                padding-top: 45px;
+            }
+        }
+    }
+
+    ion-navbar-section {
+        height: 65px;
+    }
+
+    .show-tabbar {
+        height: 30px;
+    }
+
+    .tabs-md {
+        .tab-button {
+            padding-top: 5px !important;
+            min-height: 30px;
+            background-color: #C7DEEF;
+            //background-color: color($colors, secondary);
+        }
+
+        .tab-button[aria-selected=true] {
+            padding-top: 5px !important;
+            min-height: 30px;
+            background-color: #1E99F7;
+        }
+
+        .tab-button-text {
+            margin: 0;
+            color: white;
+            vertical-align: middle;
+            text-transform: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    }
+
+    .tabs-ios {
+        .tab-button {
+            //padding-top: 12px !important;
+            min-height: 30px !important;
+            background-color: #C7DEEF;
+        }
+
+        .tab-button[aria-selected=true] {
+            //padding-top: 12px !important;
+            background-color: #1E99F7;
+        }
+
+        .tab-button-text {
+            margin: 0;
+            color: white;
+            vertical-align: middle;
+            text-transform: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    }
+}

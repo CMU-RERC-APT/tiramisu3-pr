@@ -9,7 +9,7 @@ TODO:
 - troubleshooting
 
 
-![Overall Architecture](/doc/img/architecture.pdf)
+![Overall Architecture](https://github.com/CMU-RERC-APT/tiramisu3-pr/blob/main/doc/img/architecture.pdf)
 
 
 

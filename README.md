@@ -9,9 +9,9 @@ TODO:
 - troubleshooting
 
 
-![Overall Architecture](https://github.com/CMU-RERC-APT/tiramisu3-pr/blob/main/doc/img/architecture.pdf)
-
-
+<p align="center">
+    <img align="center" width="75%" src="architecture.pdf" alt="Overall Architecture" title="Overall Architecture"</img>   
+</p>
 
 
 

@@ -23,21 +23,21 @@ public class PropertiesConfiguror {
 		alarmProcessorProperties.put("ALARM_BUFFER_PERIOD", 120000);
 		alarmProcessorProperties.put("FCM_URL", "https://fcm.googleapis.com/fcm/send");
 		alarmProcessorProperties.put("NUM_THREADS", 10);
-		alarmProcessorProperties.put("IOS_CERTIFICATE", "/Users/Yang_Jin/Documents/projects/Tiramisu/tiramisuV3/backend/alarm-processor/src/main/resource/ios_apns_certificate2.p12");
-		alarmProcessorProperties.put("IOS_CERTIFICATE_PASSWORD", "tiramisu");
-		alarmProcessorProperties.put("AUTHORIZATION_KEY", "AIzaSyA5_hpmoV8PkQa4jqW0Mvfc1lrXW1jp3cg");
+		alarmProcessorProperties.put("IOS_CERTIFICATE", "YOUR_URL_HERE");
+		alarmProcessorProperties.put("IOS_CERTIFICATE_PASSWORD", "YOUR_PASSWORD_HERE");
+		alarmProcessorProperties.put("AUTHORIZATION_KEY", "YOUR_PASSWORD_HERE");
 		alarmProcessorProperties.put("DELAY", 10000);
 		propertiesDb.put("AlarmProcessor", null, alarmProcessorProperties.toString());
 		
 		JSONObject dbConnectionProperties = new JSONObject();
 		dbConnectionProperties.put("CONN_STRING", "jdbc:postgresql://localhost/mydb");
 		dbConnectionProperties.put("USERNAME", "Yang_Jin");
-		dbConnectionProperties.put("PASSWORD", "password");
+		dbConnectionProperties.put("PASSWORD", "YOUR_PASSWORD_HERE");
 		propertiesDb.put("DBConnection", null, dbConnectionProperties.toString());
 		
 		JSONObject obaConnectionProperties = new JSONObject();
 		obaConnectionProperties.put("API_KEY", "TEST");
-		obaConnectionProperties.put("API_URL_BASE", "http://onebusaway-test.us-east-1.elasticbeanstalk.com/oba/api/where/");
+		obaConnectionProperties.put("API_URL_BASE", "YOUR_URL_HERE");
 		propertiesDb.put("OBAConnection", null, obaConnectionProperties.toString());
 	}
 }

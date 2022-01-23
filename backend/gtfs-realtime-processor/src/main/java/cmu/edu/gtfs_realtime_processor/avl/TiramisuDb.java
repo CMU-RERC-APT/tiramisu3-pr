@@ -51,7 +51,7 @@ import cmu.edu.gtfs_realtime_processor.util.TimeUtil;
 import cmu.edu.gtfs_realtime_processor.util.GtfsUtil;
 
 public class TiramisuDb { 
-    private static final String DYNAMODB_ENDPOINT = "dynamodb.us-east-1.amazonaws.com";
+    private static final String DYNAMODB_ENDPOINT = "YOUR_URL_HERE";
     private static final long ONE_DAY_MILLIS = 86400000;
     private static Logger logger = Logger.getLogger(TiramisuDb.class.getName());
     private Table table;
@@ -83,7 +83,7 @@ public class TiramisuDb {
       "Agency" : "paac",
       "Observations" : "aaaaaaaaaaaa"
       }
-      TiramisuDb db = TiramisuDb.getDb("/home/bili/AwsCredentials.properties");
+      TiramisuDb db = TiramisuDb.getDb("YOUR_URL_HERE");
       db.displayTableInformation();
       }
     */

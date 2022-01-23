@@ -30,10 +30,10 @@ import com.amazonaws.services.sqs.model.Message;
 
 public class TiramisuConfig {
 
-   public static String credentialUrl = "/Users/Yang_Jin/AwsCredentials.properties";
-//   public static String credentialUrl = "/Users/teddyding/.aws/credentials";
+   public static String credentialUrl = "YOUR_URL_HERE";
+//   public static String credentialUrl = "YOUR_URL_HERE";
 //
-//   //public static String credentialUrl = "/home/bili/AwsCredentials.properties";
+//   //public static String credentialUrl = "YOUR_URL_HERE";
    private static final String gtfsPAACDataPath = "gtfs/paac";
    private static final String gtfsMTADataPath = "gtfs/mta";
    private static Logger logger = Logger.getLogger(TiramisuConfig.class.getName());
@@ -49,15 +49,15 @@ public class TiramisuConfig {
 //               resource = ClassLoader.getSystemClassLoader().getResource(gtfsPAACDataPath + "/trips.txt");
 //               System.out.println("THE RESOURCE" + resource.toString());
 //               break;
-         		result = "/Users/Yang_Jin/Documents/projects/Tiramisu/backend/google_transit_CleverTripID_1606";
-//         		result = "/Users/teddyding/projects/tiramisu/backend/gtfs-realtime-processor/src/main/resources/main/gtfs/paac";
+         		result = "YOUR_URL_HERE";
+//         		result = "YOUR_URL_HERE";
          		break;
             case "MTA":
 //               resource = ClassLoader.getSystemClassLoader().getResource(gtfsMTADataPath + "/trips.txt");
 //               System.out.println("THE RESOURCE" + resource.toString());
 //               break;
-         		result = "/Users/Yang_Jin/Documents/projects/Tiramisu/backend/MTA/google_transit_manhattan";
-//         		result = "/Users/teddyding/projects/tiramisu/backend/gtfs-realtime-processor/src/main/resources/main/gtfs/mta";
+         		result = "YOUR_URL_HERE";
+//         		result = "YOUR_URL_HERE";
          		break;
          }
 //         result = Paths.get(resource.toURI()).toFile().getParentFile().getAbsolutePath();

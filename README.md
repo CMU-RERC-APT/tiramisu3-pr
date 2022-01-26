@@ -1,5 +1,5 @@
 # Tiramisu3-PR
-This is the Public Release version of Tiramisu3, an adaptive mobile transit app that shows real-time bus arrival information developed and deployed by Carnegie Mellon University. It adapts the information display by predicting and filtering for the bus routes users are most likely interested in using time of day and location. Tiramisu3 fed transit information from two main agencies: Port Authority of Allegheny County (PAAC) in Pittsburgh, Pennsylvania; and MTA in New York City. Core funding for this work and the bulk of the associated research was through the <a href="http://rercapt.org/">Rehabilitation Engineering Research Center on Accessible Public Transportation (RERC-APT)</a>. Additional information about the research can be found at the <a href="https://tbd.ri.cmu.edu/">Transportation, Bots, & Disability Lab</a>.
+This is the Public Release version of Tiramisu3, an adaptive mobile transit app that shows real-time bus arrival information developed and deployed by Carnegie Mellon University. It adapts the information display by predicting and filtering for the bus routes users are most likely interested in using time of day and location. Tiramisu3 fed transit information from two main agencies: Port Authority of Allegheny County (PAAC) in Pittsburgh, Pennsylvania; and MTA in New York City. Core funding for this work and the bulk of the associated research was through the [Rehabilitation Engineering Research Center on Accessible Public Transportation (RERC-APT)](http://rercapt.org/). Additional information about the research can be found at the [Transportation, Bots, & Disability Lab](https://tbd.ri.cmu.edu/).
 
 
 # Overall Architecture:
@@ -270,7 +270,6 @@ Solution:
 
 ## OBA bundle generation
 
-
 1. Error: [IndividualCsvEntityReader.java:110] : expected and actual number of csv fields differ: type=org.onebusaway.gtfs.model.Stop line # 15395 expected=5 actual=4\
 Solution:
 	* this error usually occurs on stops.txt in PAAC and Manhattan
@@ -300,7 +299,7 @@ Solution:
 	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:110)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:202)
-	...\
+	... \
   Solution:
   - this error is mostly due to changes on the PAAC version (clever version). To fix it, replace agency_id "2" with "PAAC" in files agency.txt and routes.txt
 
@@ -347,12 +346,88 @@ This a list of the most representative [published work](doc/papers.md) about the
 
 ```
 
-```
+<!-- ```
 @misc{tiramisu:2016,
   title={Tiramisu: Information from Live Data Streams},
   author={Tomasic, Anthony and Giampapa, Joseph and Gardiner, Steven and Deng, Sophia and Steinfeld, Aaron},
   journal={TSET UTC Final Project Report},
   year={2016}
+}
+``` -->
+```
+@article{traut2019identifying,
+  title={Identifying commonly used and potentially unsafe transit transfers with crowdsourcing},
+  author={Traut, Elizabeth J and Steinfeld, Aaron},
+  journal={Transportation Research Part A: Policy and Practice},
+  volume={122},
+  pages={99--111},
+  year={2019},
+  publisher={Elsevier}
+}
+```
+
+```
+@article{steinfeld2019increasing,
+  title={Increasing Access to Transit: Localized Mobile Information},
+  author={Steinfeld, Aaron and Bloomfield, Leslie and Amick, Sarah and Huang, Yun and Odom, Will and Yang, Qian and Zimmerman, John},
+  journal={Journal of Urban Technology},
+  volume={26},
+  number={3},
+  pages={45--64},
+  year={2019},
+  publisher={Routledge}
+}
+```
+
+```
+@article{pi2018understanding,
+  title={Understanding Human Perception of Bus Fullness: An Empirical Study of Crowdsourced Fullness Ratings and Automatic Passenger Count Data},
+  author={Pi, Xidong and Qian, Zhen and Steinfeld, Aaron and Huang, Yun},
+  journal={Transportation Research Record},
+  volume={2672},
+  number={8},
+  pages={475--484},
+  year={2018},
+  publisher={SAGE Publications Sage CA: Los Angeles, CA}
+}
+```
+
+```
+@book{steinfeld2017accessible,
+  title={Accessible Public Transportation: Designing Service for Riders with Disabilities},
+  author={Steinfeld, Aaron and Maisel, Jordana L and Steinfeld, Edward},
+  year={2017},
+  publisher={Routledge}
+}
+```
+
+```
+@inproceedings{yang2016planning,
+  title={Planning Adaptive Mobile Experiences When Wireframing},
+  author={Yang, Qian and Zimmerman, John and Steinfeld, Aaron and Tomasic, Anthony},
+  booktitle={Proceedings of the 2016 ACM Conference on Designing Interactive Systems},
+  pages={565--576},
+  year={2016},
+  organization={ACM}
+}
+```
+
+```
+@inproceedings{huang2016combining,
+  title={Combining contribution interactions to increase coverage in mobile participatory sensing systems},
+  author={Huang, Yun and Zimmerman, John and Tomasic, Anthony and Steinfeld, Aaron},
+  booktitle={Proceedings of the 18th International Conference on Human-Computer Interaction with Mobile Devices and Services},
+  pages={365--376},
+  year={2016},
+  organization={ACM}
+}
+```
+
+```
+@techreport{tomasic2015performance,
+  title={The performance of a crowdsourced transportation information system},
+  author={Tomasic, Anthony and Zimmerman, John and Garrod, Charles and Huang, Yun and Nip, Terence and Steinfeld, Aaron},
+  year={2015}
 }
 ```
 
@@ -368,6 +443,28 @@ This a list of the most representative [published work](doc/papers.md) about the
 ```
 
 ```
+@article{steinfeld2013co,
+  title={Co-producing value through public transit information services},
+  author={Steinfeld, Aaron and Rao, Shree Lakshmi and Tran, Allison and Zimmerman, John and Tomasic, Anthony},
+  journal={Advances in the Human Side of Service Engineering},
+  pages={231--40},
+  year={2013},
+  publisher={CRC Press Boca Raton}
+}
+```
+
+```
+@inproceedings{huang2013energy,
+  title={Energy efficient and accuracy aware (E2A2) location services via crowdsourcing},
+  author={Huang, Yun and Tomasic, Anthony and An, Yufei and Garrod, Charles and Steinfeld, Aaron},
+  booktitle={Wireless and Mobile Computing, Networking and Communications (WiMob), 2013 IEEE 9th International Conference on},
+  pages={436--443},
+  year={2013},
+  organization={IEEE}
+}
+```
+
+```
 @inproceedings{tiramisu:2011,
   title={Field trial of Tiramisu: crowd-sourcing bus arrival times to spur co-design},
   author={Zimmerman, John and Tomasic, Anthony and Garrod, Charles and Yoo, Daisy and Hiruncharoenvate, Chaya and Aziz, Rafae and Thiruvengadam, Nikhil Ravi and Huang, Yun and Steinfeld, Aaron},
@@ -375,6 +472,43 @@ This a list of the most representative [published work](doc/papers.md) about the
   pages={1677--1686},
   year={2011},
   organization={ACM}
+}
+```
+
+```
+@article{steinfeld2011mobile,
+  title={Mobile transit information from universal design and crowdsourcing},
+  author={Steinfeld, Aaron and Zimmerman, John and Tomasic, Anthony and Yoo, Daisy and Aziz, Rafae Dar},
+  journal={Transportation Research Record},
+  volume={2217},
+  number={1},
+  pages={95--102},
+  year={2011},
+  publisher={SAGE Publications Sage CA: Los Angeles, CA}
+}
+```
+
+```
+@inproceedings{yoo2010understanding,
+  title={Understanding the space for co-design in riders' interactions with a transit service},
+  author={Yoo, Daisy and Zimmerman, John and Steinfeld, Aaron and Tomasic, Anthony},
+  booktitle={Proceedings of the SIGCHI Conference on Human Factors in Computing Systems},
+  pages={1797--1806},
+  year={2010},
+  organization={ACM}
+}
+```
+
+```
+@article{steinfeld2010value,
+  title={The value and acceptance of citizen science to promote transit accessibility},
+  author={Steinfeld, Aaron and Dar Aziz, Rafae and Von Dehsen, Lauren and Park, Sun Young and Maisel, Jordana L and Steinfeld, Edward},
+  journal={Technology and Disability},
+  volume={22},
+  number={1},
+  pages={73--81},
+  year={2010},
+  publisher={IOS Press}
 }
 ```
 

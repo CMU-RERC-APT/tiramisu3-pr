@@ -393,4 +393,4 @@ Tiramisu has been supported by the National Institute on Disability, Independent
 
 Additional support provided by Traffic21 at Carnegie Mellon University, NIDILRR SBIR (90BI0018), and the US DOT through the FTA/RITA SBIR (12.1-FT1-010), and the Technologies for Safe and Efficient Transportation University Transportation Center (DTRT12-G-UTC11).
 
-We would like to thank everyone who has worked on Tiramisu over the years and the Port Authority of Allegheny County for their insights and assistance.
+We would like to thank everyone who has worked on Tiramisu over the years (a full list is being compiled). We also thank the Port Authority of Allegheny County for their incredibly valuable insights and assistance throughout the project.

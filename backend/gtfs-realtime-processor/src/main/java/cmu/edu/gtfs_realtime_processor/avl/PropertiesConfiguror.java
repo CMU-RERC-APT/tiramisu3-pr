@@ -26,8 +26,8 @@ public class PropertiesConfiguror {
 		feedGrabberPAACProperties.put("GET_ROUTES_FUNC_NAME", "getroutes");
 		feedGrabberPAACProperties.put("MAX_COUNT", 10);
 		feedGrabberPAACProperties.put("AGENCY_NAME", "PAAC");
-		feedGrabberPAACProperties.put("AGENCY_URL", "http://realtime.portauthority.org/bustime/api/v1/");
-		feedGrabberPAACProperties.put("AGENCY_KEY", "wkrSrHHzJpj9kz2aDFUPy68tz");
+		feedGrabberPAACProperties.put("AGENCY_URL", "YOUR_URL_HERE");
+		feedGrabberPAACProperties.put("AGENCY_KEY", "YOUR_PASSWORD_HERE");
 		propertiesDb.put("FeedGrabberPAAC", null, feedGrabberPAACProperties.toString());
 
 		JSONObject feedGrabberMTAProperties = new JSONObject();
@@ -36,14 +36,14 @@ public class PropertiesConfiguror {
 		feedGrabberMTAProperties.put("QUEUE_THRESHOLD_SIZE", 240000);
 		feedGrabberMTAProperties.put("funcName", "vehicle-monitoring");
 		feedGrabberMTAProperties.put("AGENCY_NAME", "MTA");
-		feedGrabberMTAProperties.put("AGENCY_URL", "http://api.prod.obanyc.com/api/siri/");
-		feedGrabberMTAProperties.put("AGENCY_KEY", "8645e7f1-2ddd-4b0b-92b1-44490b182ff1");
+		feedGrabberMTAProperties.put("AGENCY_URL", "YOUR_URL_HERE");
+		feedGrabberMTAProperties.put("AGENCY_KEY", "YOUR_PASSWORD_HERE");
 		propertiesDb.put("FeedGrabberMTA", null, feedGrabberMTAProperties.toString());
 
 		JSONObject feedQueueProperties = new JSONObject();
 		feedQueueProperties.put("NUM_QUEUES", 10);
 		feedQueueProperties.put("QUEUE_NAME", "RealtimeObservationsQueue");
-		feedQueueProperties.put("SQS_ENDPOINT", "https://sqs.us-east-1.amazonaws.com");
+		feedQueueProperties.put("SQS_ENDPOINT", "YOUR_URL_HERE");
 		propertiesDb.put("FeedQueue", null, feedQueueProperties.toString());
 
 		JSONObject observationProcessorProperties = new JSONObject();

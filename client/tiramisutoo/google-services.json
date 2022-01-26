@@ -1,7 +1,7 @@
 {
   "project_info": {
     "project_number": "723232743147",
-    "firebase_url": "https://tiramisutoo-149218.firebaseio.com",
+    "firebase_url": "YOUR_URL_HERE",
     "project_id": "tiramisutoo-149218",
     "storage_bucket": "tiramisutoo-149218.appspot.com"
   },
@@ -21,7 +21,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBuKh13rJ435p1udzBMrxCeF0-UzQFZ8bM"
+          "current_key": "YOUR_PASSWORD_HERE"
         }
       ],
       "services": {
@@ -52,7 +52,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBuKh13rJ435p1udzBMrxCeF0-UzQFZ8bM"
+          "current_key": "YOUR_PASSWORD_HERE"
         }
       ],
       "services": {

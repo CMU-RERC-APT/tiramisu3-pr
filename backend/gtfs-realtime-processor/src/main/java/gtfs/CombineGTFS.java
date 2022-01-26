@@ -11,7 +11,7 @@ import org.apache.commons.cli.*;
 
 public class CombineGTFS{
     public static String gt = "google_transit"; // Files are under "google_transit_bureauname"*/ 
-    //public static String mtaPath = "/Users/teddyding/projects/tiramisu/backend/gtfs-realtime-processor/src/main/resources/main/gtfs/mta";
+    //public static String mtaPath = "YOUR_URL_HERE";
     public static String inputPath;
     public static String outputPath;
     public static String[] bureau = {"", "_bronx", "_brooklyn", "_staten_island", "_queens", "_manhattan"};

@@ -1,26 +1,92 @@
 # Tiramisu3-PR
-Public Release version of Tiramisu3, an adaptive mobile transit app (created by Carnegie Mellon University) that shows bus arrival information. It adapts the information display by predicting and filtering for the bus routes users are most likely interested in using time of day and location.
+Public Release version of Tiramisu3, an adaptive mobile transit app (created by Carnegie Mellon University) that shows real-time bus arrival information. It adapts the information display by predicting and filtering for the bus routes users are most likely interested in using time of day and location. Tiramisu3 fed transit information from two main agencies: PortaAuthority in Pittsburgh, Pennsylvania (PAAC); and MTA in New York City.
 
 
 # Overall Architecture:
 
-Tiramisu3
+Tiramisu3 is designed as a layered architecture as follows: a mobile-based layer that supports both Android and iOS devices; a Java frontend that processes all the requests from the client layer and backend running processes, and communicates with the lower layers; a backend layer that handles a set of information extraction and monitoring processors that are triggered periodically; a Python prediction layer that is in charge of executing a machine learning algorithm to predict user's bus route filters; and an infrastructure layer backed on Amazon Web Services (AWS).
 
 <p align="center">
-    <img align="center" src="doc/img/architecture.png" alt="Overall Architecture" title="Overall Architecture"</img>   
+    <img align="center" src="doc/architecture2.png" alt="Overall Architecture" title="Overall Architecture"</img>   
 </p>
 
-app was developed
+**Note:** take into account that the picture above does not depict all the modules and components of the Tiramisu3's architecture, it is only a simplified version that is good enough to understand the flow of information through the system.
 
 
+# Subsystems
 
-can be run on both Android and iOS platforms. To this end, we used Ionic, a development framework that allows for building cross-platform apps. For the back-end, we set up instances of Amazon Web Services (AWS) that performed diverse tasks: running the ML model, logging/storing all the user interaction, and sending requests to OneBusAway, a public API that gets real-time transit information on scheduled and predicted bus arrival times.
+In the following, a brief description of each subsystem is provided. 
+
+## Mobile App (Client)
+*[Directory: client/tiramisutoo/]*
+
+Having in mind the non-functional multi-platform requirement, Tiramisu3's client layer was developed using Ionic framework. [Ionic](https://ionicframework.com/) is a framework that allows for building cross-platform apps using the same codebase.
+
+Tiramisu3's user interface is adaptive (see picture below). When users download Tiramisu3 app for the very first time, the will see a screen as the one on the left where all the bus routes (including both inbound and outbound directions) for the current location are shown. Users have to scroll down to see all the results (e.g., the location shown in this figure has 14 bus schedule rows for 8 routes). Users can manually select filters for in/outbound direction and preferred bus routes, as shown on the screen at the center of the picture. For instance, in the depicted picture, the user has selected filters for bus routes 61A and 61B with outbound direction (blue boxes) -- at this point there is no adaptation yet. In the right screen, there is an example of an adaptive interface that has prioritized the results. The top section of the results window contains the most frequently routes the user takes given the current context (time and location) filtered by either inbound or outbound direction, i.e., bus routes 61A, 61B, and 61D. Filter buttons are colored differently. Orange shows the actions taken by the app, the predicted filters. Blue shows filters selected by the user.
 
 
+<p align="center">
+    <img align="center" src="doc/interface.png" alt="User Interface" title="User Interface"</img>   
+</p>
 
-- Description of subsystem and modules
-- GTFS (MTA, PAAC)
 
+## Frontend
+
+### WriteFavXXXServlet and ReadFavXXXServlet
+*[Directory: frontend/tiramisu/src/main/java]*
+
+These two types of servlets write and read data to and from the Postgres database, where all user's interaction is logged to (e.g., navigation, button and filter selection, component's change of focus, etc.) For instance, WriteFavRouteServlet and ReadFavRouteServlet, write and read information (respectively) related to user's favorite bus routes according to the context (time, day of the week, and location). This information is used as well by the prediction layer, as explained later.
+
+### SchedulesForLocationServlet
+*[Directory: frontend/tiramisu/src/main/java]*
+
+This servlet processes requests from the client by using user's current location (latitude and longitude coordinates) to search for bus schedules for a specific bus stop. To this purpose, the servlet queries [OneBusAway](https://onebusaway.org/) (OBA for short), an open source platform for real-time transit info. The OBA bundle needs to be deployed in a web server, so it can listen to requests from SchedulesForLocationServlet. For illustration purposes, OBA was running on a AWS instance under the riderinfo.org domain.
+
+### GTFSRealtimeServlet and GTFSRealtimeProvider
+*[Directory: frontend/tiramisu/src/main/java]* \
+*[Directory: frontend/tiramisu/src/main/java/realtime]* 
+
+These two components process requests from the client to get real-time information from RealtimeObservationsTable (as explained below). More specifically, GTFSRealtimeServlet gets information about vehicle (bus) positions and trip updates. The prefix GTFS stands for General Transit Feed Specification, a standard format for public transportation schedules and associated geographic information (see details of the [GTFS specification](https://developers.google.com/transit/gtfs)).
+
+
+## Backend
+This layer defines 5 automatic processes (schedule them by setting up a cron job): 
+
+### FeedGrabber
+*[Directory: backend/gtfs-realtime-processor/src/main/java/cmu/edu/gtfs_realtime_processor/avl]*
+
+This process feeds real-time transit information from both PortaAuthority (PAAC) and New York City (MTA) agencies. More specifically, it fetches information about routes (vehicle positions and predicted arrival times) and trip updates. The information that is fed from the agencies uses the GTFS format, so the FeedGrabber first parses GTFS updates into messages in json format. Then, the messages are pushed onto a FeedQueue object that is backed by AWS SimpleQueueMessaging. After that, messages are readily available by any other consumer (like ObservationProcessor).
+
+### ObservationProcessor
+*[Directory: backend/gtfs-realtime-processor/src/main/java/cmu/edu/gtfs_realtime_processor/avl]*
+
+This processor continually checks the contents of the FeedQueue. If there are new messages in the queue (indicating that the FeedGrabber posted updates of the real-time transit information), then the processor dequeues the messages, parses them, and them inserts them into the RealtimeObservationsTable to make them available to the GTFSRealtimeProvider. The RealtimeObservationsTable is a table that is stored on a (AWS) Dynamo database, however, you can use any other NoSQL database service.
+
+### RealTimeMonitoring
+*[Directory: backend/gtfs-realtime-processor/src/main/java/cmu/edu/gtfs_realtime_processor/avl]*
+
+This processor runs every 24 hours and its purpose is to assure that the real-time system is working properly. To this end, the processor requests the bus schedules for a bunch of predefined locations (latitude, longitude pairs) through the SchedulesForLocationServlet. The result of each request is a list of vehicle location objects, where each object contains both static and real-time information of the bus. If objects do not contain real-time information (i.e., the attribute "predicted" of the object is "false") then the processor emails a notification to the primary contact email that you set up.
+
+
+### DynamoCleaner
+*[Directory: backend/gtfs-realtime-processor/src/main/java/cmu/edu/gtfs_realtime_processor/avl]*
+
+This processors removes completely the temporary data on RealtimeObservationsTable. Additionally, it purges all the messages from the feed queues. This processor has to be used when the GTFS information is updated (see Guides below) and therefore a fresh start is needed. 
+
+### AlarmProcessor
+*[Directory: backend/alarm-processor/src/main/java/cmu/edu/alarm_processor/]*
+
+The AlarmProcessor pushes notifications to users' devices (either iOS or Android) regarding next bus arrivals filtered by stop. The notifications may contain information about the route name, the trip headsign, and the stop name. Information about alarms is extracted by the processor from table user_data.alarms.
+
+
+## Filter Predictor
+*[Directory: predictor/route_predict/]*
+
+Tiramisu3 uses a Machine Learning algorithm (Random Forest) to automatically filter out information on arriving transit vehicles based on information about the user's current context. Random Forest model uses a simple but powerful supervised ML method that combines many weak learners (decision trees) into strong learners improving prediction accuracy. If available, the Random Forest model employs the user's previous behavior to predict route filters. Otherwise, it makes filter predictions based on traffic behaviors observed in a group of similar users. 
+
+The filter predictor component defines a 30-tree-estimator classifier per user which trains on user logs, where selection/deselection of route filters are used as a means to label correct/incorrect adaptations. That is, every time the user selects/deselects a route filter (labels), the system logs the time, date, day of the week, location, and any selected inbound/outbound bus filter (features). Then, the system uses these features and labels to train the ML model so it could predict which routes and direction the user would select. 
+
+When users select additional filters, then the system captures this as new training data (and the model is retrained every 24 hours). When users deselect predicted filters, then this considered as a mislabeling error. At least 80 samples (filter selections) are needed in order for the Random Forest algorithm to make a route prediction for a specific user.
 
 
 
@@ -100,6 +166,7 @@ can be run on both Android and iOS platforms. To this end, we used Ionic, a deve
 
 ### Update GTFS
 
+Do this periodically (a week ahead before the current GTFS feed expires):
 1. Download and unzip the most recent GTFS updates for [MTA](http://web.mta.info/developers/developer-data-terms.html#data) and [PAAC](https://www.portauthority.org/business-center/developer-resources/)
 1. Generate realtime processor jars: `mvn package backend/gtfs-realtime-processor`
 1. Generate the combined MTA GTFS (merge the GTFS for the 6 different bureaus into one consistent GTFS -- Bronx, Brooklin, Manhattan, Queens, Staten Island, and Bus Company):
@@ -255,11 +322,11 @@ Solution:
 
 1. Error: Problem (EB): Script timed out before returning headers: application.py\
   Solution:
-  - Follow [this](https://stackoverflow.com/questions/41812497/aws-elastic-beanstalk-script-timed-out-before-returning-headers-application-p)
+  - Follow [this procedure](https://stackoverflow.com/questions/41812497/aws-elastic-beanstalk-script-timed-out-before-returning-headers-application-p)
 
 1. Error: OSError: libnccl.so.2: cannot open shared object file: No such file or directory\
   Solution:
-  - Follow [this](https://discuss.mxnet.apache.org/t/oserror-libnccl-so-2-cannot-open-shared-object-file-no-such-file-or-directory/6966)
+  - Follow [this procedure](https://discuss.mxnet.apache.org/t/oserror-libnccl-so-2-cannot-open-shared-object-file-no-such-file-or-directory/6966)
 
 
 # Related Papers:
@@ -288,19 +355,12 @@ This a list of the most representative [published work](doc/papers.md) about the
 
 ```
 @inproceedings{tiramisu:2014,
-  author = {Tomasic, Anthony and Zimmerman, John and Steinfeld, Aaron and Huang, Yun},
   title = {Motivating Contribution in a Participatory Sensing System via Quid-pro-Quo},
+  author = {Tomasic, Anthony and Zimmerman, John and Steinfeld, Aaron and Huang, Yun},  
   year = {2014},
-  isbn = {9781450325400},
-  publisher = {Association for Computing Machinery},
-  address = {New York, NY, USA},
-  url = {https://doi.org/10.1145/2531602.2531705},
-  doi = {10.1145/2531602.2531705},
   booktitle = {Proceedings of the 17th ACM Conference on Computer Supported Cooperative Work & Social Computing},
   pages = {979–988},
-  numpages = {10},
-  location = {Baltimore, Maryland, USA},
-  series = {CSCW '14}
+  numpages = {10}
 }
 ```
 
@@ -318,6 +378,9 @@ This a list of the most representative [published work](doc/papers.md) about the
 
 # Related Links
 
+* [OneBusAway](https://onebusaway.org/)
+* [GTFS Specification](https://developers.google.com/transit/gtfs)
 * [Ionic Turorial](https://ionicpro.wistia.com/medias/tlntguizp1)
 * [Installing Ionic](https://ionicframework.com/docs/installation/cli)
 * [Setting up npm](https://www.npmjs.com/get-npm)
+

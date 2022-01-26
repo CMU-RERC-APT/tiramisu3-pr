@@ -1,5 +1,5 @@
 # Tiramisu3-PR
-Public Release version of Tiramisu3, an adaptive mobile transit app (created by Carnegie Mellon University) that shows real-time bus arrival information. It adapts the information display by predicting and filtering for the bus routes users are most likely interested in using time of day and location. Tiramisu3 fed transit information from two main agencies: PortaAuthority in Pittsburgh, Pennsylvania (PAAC); and MTA in New York City.
+This is the Public Release version of Tiramisu3, an adaptive mobile transit app that shows real-time bus arrival information developed and deployed by Carnegie Mellon University. It adapts the information display by predicting and filtering for the bus routes users are most likely interested in using time of day and location. Tiramisu3 fed transit information from two main agencies: Port Authority of Allegheny County (PAAC) in Pittsburgh, Pennsylvania; and MTA in New York City. Core funding for this work and the bulk of the associated research was through the <a href="http://rercapt.org/">Rehabilitation Engineering Research Center on Accessible Public Transportation (RERC-APT)</a>. Additional information about the research can be found at the <a href="https://tbd.ri.cmu.edu/">Transportation, Bots, & Disability Lab</a>.
 
 
 # Overall Architecture:
@@ -386,3 +386,11 @@ This a list of the most representative [published work](doc/papers.md) about the
 * [Ionic Turorial](https://ionicpro.wistia.com/medias/tlntguizp1)
 * [Installing Ionic](https://ionicframework.com/docs/installation/cli)
 * [Setting up npm](https://www.npmjs.com/get-npm)
+
+# Acknowledgements
+
+Tiramisu has been supported by the National Institute on Disability, Independent Living, and Rehabilitation Research (NIDILRR grant number 90REGE0007). NIDILRR is a Center within the Administration for Community Living (ACL), Department of Health and Human Services (HHS). It was previously funded by NIDILRR (grant number 90RE5011-01-00) and the National Institute on Disability and Rehabilitation Research (grant numbers H133E080019 and H133E130004) within the Department of Education. No endorsement should be assumed by NIDILRR or the United States Government for the content contained on this website.
+
+Additional support provided by Traffic21 at Carnegie Mellon University, NIDILRR SBIR (90BI0018), and the US DOT through the FTA/RITA SBIR (12.1-FT1-010), and the Technologies for Safe and Efficient Transportation University Transportation Center (DTRT12-G-UTC11).
+
+We would like to thank everyone who has worked on Tiramisu over the years and the Port Authority of Allegheny County for their insights and assistance.

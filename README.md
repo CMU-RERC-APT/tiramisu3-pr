@@ -15,7 +15,7 @@ Tiramisu3 is designed as a layered architecture as follows: a mobile-based layer
 
 # Subsystems
 
-In the following, a brief description of each subsystem is provided. 
+In the following, a brief description of each subsystem is provided.
 
 ## Mobile App (Client)
 *[Directory: client/tiramisutoo/]*
@@ -44,13 +44,13 @@ This servlet processes requests from the client by using user's current location
 
 ### GTFSRealtimeServlet and GTFSRealtimeProvider
 *[Directory: frontend/tiramisu/src/main/java]* \
-*[Directory: frontend/tiramisu/src/main/java/realtime]* 
+*[Directory: frontend/tiramisu/src/main/java/realtime]*
 
 These two components process requests from the client to get real-time information from RealtimeObservationsTable (as explained below). More specifically, GTFSRealtimeServlet gets information about vehicle (bus) positions and trip updates. The prefix GTFS stands for General Transit Feed Specification, a standard format for public transportation schedules and associated geographic information (see details of the [GTFS specification](https://developers.google.com/transit/gtfs)).
 
 
 ## Backend
-This layer defines 5 automatic processes (schedule them by setting up a cron job): 
+This layer defines 5 automatic processes (schedule them by setting up a cron job):
 
 ### FeedGrabber
 *[Directory: backend/gtfs-realtime-processor/src/main/java/cmu/edu/gtfs_realtime_processor/avl]*
@@ -71,7 +71,7 @@ This processor runs every 24 hours and its purpose is to assure that the real-ti
 ### DynamoCleaner
 *[Directory: backend/gtfs-realtime-processor/src/main/java/cmu/edu/gtfs_realtime_processor/avl]*
 
-This processors removes completely the temporary data on RealtimeObservationsTable. Additionally, it purges all the messages from the feed queues. This processor has to be used when the GTFS information is updated (see Guides below) and therefore a fresh start is needed. 
+This processors removes completely the temporary data on RealtimeObservationsTable. Additionally, it purges all the messages from the feed queues. This processor has to be used when the GTFS information is updated (see Guides below) and therefore a fresh start is needed.
 
 ### AlarmProcessor
 *[Directory: backend/alarm-processor/src/main/java/cmu/edu/alarm_processor/]*
@@ -82,9 +82,9 @@ The AlarmProcessor pushes notifications to users' devices (either iOS or Android
 ## Filter Predictor
 *[Directory: predictor/route_predict/]*
 
-Tiramisu3 uses a Machine Learning algorithm (Random Forest) to automatically filter out information on arriving transit vehicles based on information about the user's current context. Random Forest model uses a simple but powerful supervised ML method that combines many weak learners (decision trees) into strong learners improving prediction accuracy. If available, the Random Forest model employs the user's previous behavior to predict route filters. Otherwise, it makes filter predictions based on traffic behaviors observed in a group of similar users. 
+Tiramisu3 uses a Machine Learning algorithm (Random Forest) to automatically filter out information on arriving transit vehicles based on information about the user's current context. Random Forest model uses a simple but powerful supervised ML method that combines many weak learners (decision trees) into strong learners improving prediction accuracy. If available, the Random Forest model employs the user's previous behavior to predict route filters. Otherwise, it makes filter predictions based on traffic behaviors observed in a group of similar users.
 
-The filter predictor component defines a 30-tree-estimator classifier per user which trains on user logs, where selection/deselection of route filters are used as a means to label correct/incorrect adaptations. That is, every time the user selects/deselects a route filter (labels), the system logs the time, date, day of the week, location, and any selected inbound/outbound bus filter (features). Then, the system uses these features and labels to train the ML model so it could predict which routes and direction the user would select. 
+The filter predictor component defines a 30-tree-estimator classifier per user which trains on user logs, where selection/deselection of route filters are used as a means to label correct/incorrect adaptations. That is, every time the user selects/deselects a route filter (labels), the system logs the time, date, day of the week, location, and any selected inbound/outbound bus filter (features). Then, the system uses these features and labels to train the ML model so it could predict which routes and direction the user would select.
 
 When users select additional filters, then the system captures this as new training data (and the model is retrained every 24 hours). When users deselect predicted filters, then this considered as a mislabeling error. At least 80 samples (filter selections) are needed in order for the Random Forest algorithm to make a route prediction for a specific user.
 
@@ -92,6 +92,7 @@ When users select additional filters, then the system captures this as new train
 
 # Guides
 
+This section provides a set of handful guides to set up and maintain Tiramisu3.
 ## Development Setup
 
 ### Client
@@ -214,6 +215,8 @@ All these commands need to be run in the correct directory with appropriate file
 
 
 # Troubleshooting
+
+This section provides helpful hints on how to solve the most common error you may find when either building the client layer or when generating the OBA bundle.
 
 ## Client
 
@@ -383,4 +386,3 @@ This a list of the most representative [published work](doc/papers.md) about the
 * [Ionic Turorial](https://ionicpro.wistia.com/medias/tlntguizp1)
 * [Installing Ionic](https://ionicframework.com/docs/installation/cli)
 * [Setting up npm](https://www.npmjs.com/get-npm)
-
